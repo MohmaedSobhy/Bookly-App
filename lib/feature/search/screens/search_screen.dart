@@ -46,7 +46,7 @@ class SearchScreen extends StatelessWidget {
                                   arguments:
                                       SearchCubit.get(context).books[index]);
                             },
-                            addToFavourite: () {},
+                            favourtieButton: () {},
                             favouriteIcon:
                                 const Icon(Icons.favorite_border_outlined),
                             book: SearchCubit.get(context).books[index],

@@ -1,4 +1,4 @@
-#Mon Oct 02 19:02:19 EET 2023
-base.0=F\:\\MobIVerse\\books_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Mon Oct 02 23:10:10 EET 2023
+base.0=F\:\\MobIVerse\\booky_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

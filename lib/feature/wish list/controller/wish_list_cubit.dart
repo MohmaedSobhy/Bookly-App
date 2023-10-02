@@ -1,12 +1,10 @@
 import 'dart:convert';
-
 import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:books_app/core/model/book.dart';
 import 'package:books_app/core/service/book_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchronized/synchronized.dart';
-
 import '../../../core/localization/app_string.dart';
 import 'wish_list_state.dart';
 
@@ -28,26 +26,40 @@ class WishListCubit extends Cubit<WishListState> {
   }
 
   void loadAllFavouriteBooks() {
-    print("ehllo");
     BookService.loadWishList().then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         Map<String, dynamic> data = jsonDecode(response.body);
         for (var item in data['data']['data']) {
           favouriteBooks.add(Book.fromJson(item));
         }
-        print(favouriteBooks.length);
+        emit(SucceedLoadWishList());
       } else {}
     }).catchError(
       (error) {},
     );
   }
 
-  void removeFromWishList(int index) {
+  void addToCart({required int index}) {
+    BookService.addTocart(id: favouriteBooks[index].id!).then((response) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        ShowToast.showMessage(
+          message: AppString.addToCartSucess,
+          color: Colors.green,
+        );
+      } else {
+        _faild();
+      }
+    }).catchError((error) {
+      _faild();
+    });
+  }
+
+  void removeFromWishList(int index) async {
     Book book = favouriteBooks[index];
-    BookService.removeFromWishList(id: book.id!).then((response) {
+    await BookService.removeFromWishList(id: book.id!).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         favouriteBooks.removeAt(index);
-        emit(SuccefullyRemoveFromWishList());
+        emit(SucceedLoadWishList());
       } else {
         _faild();
       }
