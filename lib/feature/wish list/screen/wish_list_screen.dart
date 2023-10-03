@@ -1,6 +1,7 @@
 import 'package:books_app/core/routes/route_name.dart';
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:books_app/core/widgets/book_item.dart';
+import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
 import 'package:books_app/core/widgets/sized_box_high.dart';
 import 'package:books_app/feature/wish%20list/controller/wish_list_cubit.dart';
 import 'package:books_app/feature/wish%20list/controller/wish_list_state.dart';
@@ -20,9 +21,7 @@ class WishListScreen extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           if (state is LoadWishList) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const CircleLoading();
           }
           if (WishListCubit.getInstanse().favouriteBooks.isEmpty) {
             return const NoBooksViews();

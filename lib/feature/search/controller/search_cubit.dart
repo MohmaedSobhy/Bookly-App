@@ -6,7 +6,6 @@ import 'package:books_app/core/model/book.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchronized/synchronized.dart';
-
 import '../../../core/helper/show_toast_message.dart';
 import '../../../core/localization/app_string.dart';
 import '../../../core/service/book_service.dart';
@@ -15,10 +14,13 @@ part 'search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   List<Book> books = [];
   List<Book> selected = [];
+  final ScrollController scrollController = ScrollController();
   SearchCubit() : super(SearchInitial());
 
   static SearchCubit? searchCubit;
   static final Lock lock = Lock();
+  int nextPage = 2;
+  bool endPage = false;
 
   static SearchCubit getInstanse() {
     if (searchCubit == null) {
@@ -29,17 +31,40 @@ class SearchCubit extends Cubit<SearchState> {
     return searchCubit!;
   }
 
-  void loadAllBooks() {
+  void initlalLoadAllBooks() async {
+    nextPage = 2;
     books.clear();
     selected.clear();
     emit(LoadingResultes());
-    APIManager.getMethod(baseUrl: EndPoints.allBooks).then((response) {
+    await APIManager.getMethod(baseUrl: EndPoints.allBooks).then((response) {
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         for (var item in json[APIKey.data][APIKey.products]) {
           books.add(Book.fromJson(item));
           selected.add(Book.fromJson(item));
         }
+        emit(SucceedGetResultes());
+      } else {
+        FailedGetResultes();
+      }
+    }).catchError((error) {
+      FailedGetResultes();
+    });
+  }
+
+  void loadBooksFromNextPage() async {
+    String url = "${EndPoints.loadBookPages}$nextPage";
+    await APIManager.getMethod(baseUrl: url).then((response) {
+      if (response.statusCode == 200) {
+        Map<String, dynamic> json = jsonDecode(response.body);
+        for (var item in json[APIKey.data][APIKey.products]) {
+          books.add(Book.fromJson(item));
+          selected.add(Book.fromJson(item));
+        }
+        if (json[APIKey.data][APIKey.products].isEmpty) {
+          endPage = true;
+        }
+        nextPage++;
         emit(SucceedGetResultes());
       } else {
         FailedGetResultes();

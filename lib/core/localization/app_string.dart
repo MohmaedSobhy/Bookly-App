@@ -35,4 +35,5 @@ abstract class AppString {
   static const String updateSucceed = "Update it Successfully";
   static const String addToCartSucess = "Book Add to Cart Successfully";
   static const String addToWishSucess = "Book Add to Wish List Successfully";
+  static const String noMoreBooks = "No More Books";
 }
