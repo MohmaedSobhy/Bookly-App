@@ -1,22 +1,13 @@
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/core/widgets/sized_box_high.dart';
-import 'package:books_app/feature/cart/model/book_cart_item.dart';
+import 'package:books_app/feature/cart/controller/cart_cubit.dart';
+import 'package:books_app/feature/cart/controller/cart_state.dart';
 import 'package:books_app/feature/cart/widgets/book_item_cart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/localization/app_string.dart';
-
-final BookCart book = BookCart(
-  itemId: 1,
-  itemProductDiscount: 120,
-  itemProductImage:
-      "https://codingarabic.online/storage/product/g1187MzWBCj9Zlcd4Q4jxty4tLPOAohmx7FYeyPh.jpg",
-  itemProductName: "Clean Code",
-  itemProductPrice: "300",
-  itemProductPriceAfterDiscount: 170,
-  itemQuantity: 1,
-);
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -24,59 +15,79 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.only(
-            left: MediaQuery.sizeOf(context).width * 0.02,
-            right: MediaQuery.sizeOf(context).width * 0.02,
-            top: MediaQuery.sizeOf(context).height * 0.05,
-          ),
-          child: Column(
-            children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppString.totalPrice,
-                    style: TextStyle(
-                      color: AppColor.darkBlue,
-                      fontSize: 25,
-                    ),
-                  ),
-                  Text(
-                    "\$150",
-                    style: TextStyle(
-                      color: AppColor.darkBlue,
-                      fontSize: 25,
-                    ),
-                  )
-                ],
-              ),
-              const SizedBoxHight(),
-              Expanded(
-                child: ListView(
+      child: BlocProvider.value(
+        value: CartCubit.getInstanse()..loadCartItems(),
+        child: Scaffold(
+          body: Padding(
+            padding: EdgeInsets.only(
+              left: MediaQuery.sizeOf(context).width * 0.02,
+              right: MediaQuery.sizeOf(context).width * 0.02,
+              top: MediaQuery.sizeOf(context).height * 0.05,
+            ),
+            child: BlocConsumer<CartCubit, CartState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return Column(
                   children: [
-                    BookCartItem(
-                      book: book,
-                      onDelete: () {},
-                      increment: () {},
-                      decrement: () {},
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          AppString.totalPrice,
+                          style: TextStyle(
+                            color: AppColor.darkBlue,
+                            fontSize: 25,
+                          ),
+                        ),
+                        Text(
+                          "\$${CartCubit.getInstanse().totalPrice}",
+                          style: const TextStyle(
+                            color: AppColor.darkBlue,
+                            fontSize: 25,
+                          ),
+                        )
+                      ],
+                    ),
+                    const SizedBoxHight(),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: CartCubit.getInstanse().books.length,
+                        itemBuilder: (context, index) {
+                          return BookCartItem(
+                            quantity: CartCubit.getInstanse()
+                                .books[index]
+                                .itemQuantity!,
+                            book: CartCubit.getInstanse().books[index],
+                            onDelete: () {
+                              CartCubit.getInstanse().deleteItem(index: index);
+                            },
+                            increment: () {
+                              CartCubit.getInstanse()
+                                  .incrmantBookQuantity(index);
+                            },
+                            decrement: () {
+                              CartCubit.getInstanse()
+                                  .decremantBookQuantity(index);
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        bottom: MediaQuery.sizeOf(context).height * 0.01,
+                      ),
+                      child: CustomButton(
+                        onTap: () {},
+                        title: AppString.checkOut,
+                        width: double.infinity,
+                        backGroundColor: AppColor.darkBlue,
+                      ),
                     )
                   ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  bottom: MediaQuery.sizeOf(context).height * 0.01,
-                ),
-                child: CustomButton(
-                  onTap: () {},
-                  title: AppString.checkOut,
-                  width: double.infinity,
-                  backGroundColor: AppColor.darkBlue,
-                ),
-              )
-            ],
+                );
+              },
+            ),
           ),
         ),
       ),

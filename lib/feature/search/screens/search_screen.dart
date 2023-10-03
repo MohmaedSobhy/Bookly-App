@@ -65,6 +65,7 @@ class SearchScreen extends StatelessWidget {
                                 SearchCubit.getInstanse().selected.length) {
                               return const CircleLoading();
                             }
+
                             return BookItem(
                               addToCart: () {
                                 SearchCubit.getInstanse()

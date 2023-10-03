@@ -30,7 +30,8 @@ abstract class BookService {
     );
   }
 
-  static Future<http.Response> updateCart({required int id}) async {
+  static Future<http.Response> updateCart(
+      {required int id, required int quantiy}) async {
     String token = "";
     await StorageHelper.getValue(key: APIKey.token).then((value) {
       token = value;
@@ -39,14 +40,13 @@ abstract class BookService {
       baseUrl: EndPoints.updateCart,
       body: {
         APIKey.cartItemId: "$id",
-        APIKey.quantity: '5',
+        APIKey.quantity: '$quantiy',
       },
       token: token,
     );
   }
 
-  static Future<http.Response> removeFromCart(
-      {required int id, required int quantity}) async {
+  static Future<http.Response> removeFromCart({required int id}) async {
     String token = "";
     await StorageHelper.getValue(key: APIKey.token).then((value) {
       token = value;
@@ -55,7 +55,6 @@ abstract class BookService {
       baseUrl: EndPoints.remvoeFromCart,
       body: {
         APIKey.cartItemId: "$id",
-        APIKey.quantity: "$quantity",
       },
       token: token,
     );

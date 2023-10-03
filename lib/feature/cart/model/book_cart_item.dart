@@ -5,10 +5,10 @@ class BookCart {
   String? itemProductImage;
   String? itemProductPrice;
   int? itemProductDiscount;
-  double? itemProductPriceAfterDiscount;
+  int? itemProductPriceAfterDiscount;
   int? itemProductStock;
   int? itemQuantity;
-  double? itemTotal;
+  int? itemTotal;
 
   BookCart(
       {this.itemId,
@@ -29,11 +29,12 @@ class BookCart {
       itemProductName: json['item_product_name'],
       itemProductImage: json['item_product_image'],
       itemProductPrice: json['item_product_price'],
-      itemProductDiscount: json['item_product_discount'],
-      itemProductPriceAfterDiscount: json['item_product_price_after_discount'],
+      itemProductDiscount: json['item_product_discount'].toInt(),
+      itemProductPriceAfterDiscount:
+          json['item_product_price_after_discount'].toInt(),
       itemProductStock: json['item_product_stock'],
       itemQuantity: json['item_quantity'],
-      itemTotal: json['item_total'],
+      itemTotal: json['item_total'].toInt(),
     );
   }
 }
