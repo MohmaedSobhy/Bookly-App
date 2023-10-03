@@ -10,6 +10,7 @@ class OnbordingScreen extends StatefulWidget {
   const OnbordingScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _OnbordingScreenState createState() => _OnbordingScreenState();
 }
 

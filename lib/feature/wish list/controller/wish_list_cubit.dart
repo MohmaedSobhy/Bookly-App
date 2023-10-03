@@ -27,6 +27,7 @@ class WishListCubit extends Cubit<WishListState> {
   }
 
   void loadAllFavouriteBooks() async {
+    emit(LoadWishList());
     await BookService.loadWishList().then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         Map<String, dynamic> data = jsonDecode(response.body);
@@ -58,7 +59,6 @@ class WishListCubit extends Cubit<WishListState> {
 
   void removeFromWishList(int index) async {
     Book book = favouriteBooks[index];
-    emit(LoadWishList());
     await BookService.removeFromWishList(id: book.id!).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         favouriteBooks.removeAt(index);

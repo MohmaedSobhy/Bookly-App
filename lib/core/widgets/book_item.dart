@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import '../model/book.dart';
 
 class BookItem extends StatelessWidget {
-  final VoidCallback favourtieButton;
+  final VoidCallback? favourtieButton;
   final VoidCallback addToCart;
-  final Icon favouriteIcon;
+  final Icon? favouriteIcon;
   final Book book;
   final VoidCallback onTap;
 
   const BookItem({
     super.key,
     required this.addToCart,
-    required this.favourtieButton,
-    required this.favouriteIcon,
+    this.favourtieButton,
+    this.favouriteIcon,
     required this.book,
     required this.onTap,
   });
@@ -115,9 +115,14 @@ class BookItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    onPressed: favourtieButton,
-                    icon: favouriteIcon,
+                  Visibility(
+                    visible: favouriteIcon != null,
+                    child: IconButton(
+                      onPressed: favourtieButton,
+                      icon: favouriteIcon == null
+                          ? const Icon(Icons.favorite_border_outlined)
+                          : favouriteIcon!,
+                    ),
                   ),
                   IconButton(
                     onPressed: addToCart,

@@ -19,6 +19,11 @@ class WishListScreen extends StatelessWidget {
       child: BlocConsumer<WishListCubit, WishListState>(
         listener: (context, state) {},
         builder: (context, state) {
+          if (state is LoadWishList) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
           if (WishListCubit.getInstanse().favouriteBooks.isEmpty) {
             return const NoBooksViews();
           }

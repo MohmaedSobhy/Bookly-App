@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../localization/app_string.dart';
+
 abstract class ShowToast {
   static void showMessage({required String message, required Color color}) {
     Fluttertoast.showToast(
@@ -12,5 +14,9 @@ abstract class ShowToast {
       textColor: Colors.white,
       fontSize: 16.0,
     );
+  }
+
+  static errorMessage() {
+    ShowToast.showMessage(message: AppString.errorMessage, color: Colors.red);
   }
 }

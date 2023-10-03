@@ -24,7 +24,6 @@ class LoginScreen extends StatelessWidget {
           body: BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {
               if (state is LoginSuccess) {
-                print("heree");
                 Get.offAllNamed(RoutesName.homelayout);
               }
             },

@@ -21,9 +21,7 @@ class NewArrivalView extends StatelessWidget {
             itemBuilder: (_, index) {
               return BookOffer(
                 book: HomeCubit.get(context).newArrival[index],
-                onPressed: () {
-                  print("new arrival");
-                },
+                onPressed: () {},
               );
             },
           ),

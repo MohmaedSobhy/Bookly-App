@@ -20,9 +20,7 @@ class BestSallerBooksView extends StatelessWidget {
             itemBuilder: (_, index) {
               return BookOffer(
                 book: HomeCubit.get(context).bestSaller[index],
-                onPressed: () {
-                  print("Offer");
-                },
+                onPressed: () {},
               );
             },
           ),

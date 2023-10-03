@@ -12,8 +12,8 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocProvider(
-        create: (context) => SearchCubit(),
+      child: BlocProvider.value(
+        value: SearchCubit.getInstanse()..loadAllBooks(),
         child: Scaffold(
           body: Padding(
             padding: EdgeInsets.symmetric(
@@ -23,33 +23,31 @@ class SearchScreen extends StatelessWidget {
             child: BlocConsumer<SearchCubit, SearchState>(
               listener: (context, state) {},
               builder: (context, state) {
-                if (SearchCubit.get(context).books.isEmpty) {
-                  SearchCubit.get(context).allBooks();
-                  print("hello");
+                if (state is LoadingResultes) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
                 }
                 return Column(
                   children: [
                     SearchTextField(
                       controller: TextEditingController(),
-                      onChange: (value) {
-                        SearchCubit.get(context).searchinBooks(value: value);
-                      },
+                      onChange: (value) {},
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: SearchCubit.get(context).selected.length,
+                        itemCount: SearchCubit.getInstanse().selected.length,
                         itemBuilder: (context, index) {
                           return BookItem(
-                            addToCart: () {},
+                            addToCart: () {
+                              SearchCubit.getInstanse().addToCart(index: index);
+                            },
                             onTap: () {
                               Get.toNamed(RoutesName.bookDetails,
-                                  arguments:
-                                      SearchCubit.get(context).books[index]);
+                                  arguments: SearchCubit.getInstanse()
+                                      .selected[index]);
                             },
-                            favourtieButton: () {},
-                            favouriteIcon:
-                                const Icon(Icons.favorite_border_outlined),
-                            book: SearchCubit.get(context).books[index],
+                            book: SearchCubit.getInstanse().selected[index],
                           );
                         },
                       ),
