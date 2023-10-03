@@ -31,8 +31,11 @@ class SearchScreen extends StatelessWidget {
                 return Column(
                   children: [
                     SearchTextField(
-                      controller: TextEditingController(),
-                      onChange: (value) {},
+                      controller:
+                          SearchCubit.getInstanse().textEditingController,
+                      onChange: (value) {
+                        SearchCubit.getInstanse().searchinBooks(value: value);
+                      },
                     ),
                     Expanded(
                       child: NotificationListener(

@@ -15,6 +15,7 @@ class SearchCubit extends Cubit<SearchState> {
   List<Book> books = [];
   List<Book> selected = [];
   final ScrollController scrollController = ScrollController();
+  final TextEditingController textEditingController = TextEditingController();
   SearchCubit() : super(SearchInitial());
 
   static SearchCubit? searchCubit;
@@ -81,6 +82,7 @@ class SearchCubit extends Cubit<SearchState> {
         selected.add(book);
       }
     }
+    endPage = true;
     emit(SucceedGetResultes());
   }
 

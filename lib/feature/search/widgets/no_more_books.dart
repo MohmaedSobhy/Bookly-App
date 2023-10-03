@@ -8,11 +8,15 @@ class NoMoreBooks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text(
-        AppString.noMoreBooks,
-        style: TextStyle(
-          color: AppColor.darkBlue,
-          fontSize: 20,
+      child: Padding(
+        padding: EdgeInsets.only(top: 10),
+        child: Text(
+          AppString.noMoreBooks,
+          style: TextStyle(
+            color: AppColor.darkBlue,
+            fontSize: 20,
+            fontWeight: FontWeight.w800,
+          ),
         ),
       ),
     );
