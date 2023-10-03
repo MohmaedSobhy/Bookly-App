@@ -7,3 +7,5 @@ class LoadWishList extends WishListState {}
 class SucceedLoadWishList extends WishListState {}
 
 class FailedLoadWishList extends WishListState {}
+
+class RemovedSuccefully extends WishListState {}

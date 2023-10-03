@@ -15,20 +15,22 @@ class WishListCubit extends Cubit<WishListState> {
   static final Lock lock = Lock();
 
   List<Book> favouriteBooks = [];
+  int numberOfBooks = 0;
 
-  static WishListCubit get(context) {
+  static WishListCubit getInstanse() {
     if (wishListCubit == null) {
       lock.synchronized(() {
-        wishListCubit ??= BlocProvider.of(context);
+        wishListCubit ??= WishListCubit();
       });
     }
     return wishListCubit!;
   }
 
-  void loadAllFavouriteBooks() {
-    BookService.loadWishList().then((response) {
+  void loadAllFavouriteBooks() async {
+    await BookService.loadWishList().then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         Map<String, dynamic> data = jsonDecode(response.body);
+        favouriteBooks.clear();
         for (var item in data['data']['data']) {
           favouriteBooks.add(Book.fromJson(item));
         }
@@ -56,10 +58,11 @@ class WishListCubit extends Cubit<WishListState> {
 
   void removeFromWishList(int index) async {
     Book book = favouriteBooks[index];
+    emit(LoadWishList());
     await BookService.removeFromWishList(id: book.id!).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         favouriteBooks.removeAt(index);
-        emit(SucceedLoadWishList());
+        emit(RemovedSuccefully());
       } else {
         _faild();
       }

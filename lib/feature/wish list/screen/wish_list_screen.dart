@@ -14,12 +14,12 @@ class WishListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WishListCubit(),
+    return BlocProvider.value(
+      value: WishListCubit.getInstanse()..loadAllFavouriteBooks(),
       child: BlocConsumer<WishListCubit, WishListState>(
         listener: (context, state) {},
         builder: (context, state) {
-          if (WishListCubit.get(context).favouriteBooks.isEmpty) {
+          if (WishListCubit.getInstanse().favouriteBooks.isEmpty) {
             return const NoBooksViews();
           }
           return Padding(
@@ -41,7 +41,8 @@ class WishListScreen extends StatelessWidget {
                 const SizedBoxHight(),
                 Expanded(
                   child: ListView.separated(
-                    itemCount: WishListCubit.get(context).favouriteBooks.length,
+                    itemCount:
+                        WishListCubit.getInstanse().favouriteBooks.length,
                     separatorBuilder: (context, index) {
                       return SizedBox(
                         height: MediaQuery.sizeOf(context).height * 0.03,
@@ -50,19 +51,19 @@ class WishListScreen extends StatelessWidget {
                     itemBuilder: (_, index) {
                       return BookItem(
                         addToCart: () {
-                          WishListCubit.get(context).addToCart(index: index);
+                          WishListCubit.getInstanse().addToCart(index: index);
                         },
                         onTap: () {
                           Get.toNamed(RoutesName.bookDetails);
                         },
                         favourtieButton: () {
-                          WishListCubit.get(context).removeFromWishList(index);
+                          WishListCubit.getInstanse().removeFromWishList(index);
                         },
                         favouriteIcon: const Icon(
                           Icons.favorite_rounded,
                           color: Colors.red,
                         ),
-                        book: WishListCubit.get(context).favouriteBooks[index],
+                        book: WishListCubit.getInstanse().favouriteBooks[index],
                       );
                     },
                   ),
