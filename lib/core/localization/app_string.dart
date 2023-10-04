@@ -38,4 +38,6 @@ abstract class AppString {
   static const String noMoreBooks = "No More Books";
   static const String orderNow = "Orde Now";
   static const String yourReceipt = "Your Receipt";
+  static const String phone = "Phone";
+  static const String address = "Address";
 }

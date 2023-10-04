@@ -25,4 +25,5 @@ abstract class EndPoints {
   static const String bestSaller = "${baseUrl}products-bestseller";
 
   static const String loadBookPages = "${baseUrl}products?page=";
+  static const String governorates = "${baseUrl}governorates";
 }
