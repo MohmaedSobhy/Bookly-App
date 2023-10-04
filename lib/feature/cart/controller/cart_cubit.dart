@@ -9,11 +9,12 @@ import 'cart_state.dart';
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-  static CartCubit? cartCubit;
-  static final Lock lock = Lock();
   int totalPrice = 0;
 
   List<BookCart> books = [];
+
+  static CartCubit? cartCubit;
+  static final Lock lock = Lock();
 
   static CartCubit getInstanse() {
     if (cartCubit == null) {

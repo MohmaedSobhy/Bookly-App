@@ -44,4 +44,11 @@ abstract class AppString {
 
   static const String thankYou = "Thank You...";
   static const String orderConfirm = "Your Order is Confirm";
+
+  static const String contactUs = "Contact Us";
+  static const String sendFeedBackSucess = "Sending Feed Back Successfully";
+  static const String send = "Send";
+
+  static const String subject = "Subject";
+  static const String message = "Message";
 }

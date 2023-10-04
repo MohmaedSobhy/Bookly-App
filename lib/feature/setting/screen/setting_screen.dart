@@ -56,6 +56,14 @@ class SettingScreen extends StatelessWidget {
                   trailingWidget: const Icon(Icons.arrow_forward),
                 ),
                 ListTitleSettingWidget(
+                  txtTitle: AppString.contactUs,
+                  leadingIcon: Icons.contact_support_outlined,
+                  trailingWidget: const Icon(Icons.arrow_forward),
+                  onTap: () {
+                    Get.toNamed(RoutesName.contactUs);
+                  },
+                ),
+                ListTitleSettingWidget(
                   txtTitle: AppString.logout,
                   leadingIcon: Icons.logout,
                   onTap: () {

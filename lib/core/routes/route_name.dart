@@ -10,4 +10,5 @@ abstract class RoutesName {
   static const String updatePassword = "Update Password";
   static const String userProfile = "User Profile";
   static const String sendOrder = "sendOrder";
+  static const String contactUs = "Contact Us";
 }

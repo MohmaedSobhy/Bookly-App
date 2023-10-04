@@ -1,4 +1,5 @@
 import 'package:books_app/feature/Book%20Details/screen/book_details.dart';
+import 'package:books_app/feature/contact%20us/screen/contact_screen.dart';
 import 'package:books_app/feature/layout/screens/home_layout.dart';
 import 'package:books_app/feature/order/screens/order_screen.dart';
 import 'package:books_app/feature/update%20profile/screens/update_profile.dart';
@@ -38,6 +39,8 @@ class AppRouting {
         return MaterialPageRoute(builder: (_) => const UserProfileScreen());
       case RoutesName.sendOrder:
         return MaterialPageRoute(builder: (_) => const OrderScreen());
+      case RoutesName.contactUs:
+        return MaterialPageRoute(builder: (_) => const ContactUsScreen());
     }
 
     return null;

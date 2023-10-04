@@ -28,4 +28,5 @@ abstract class EndPoints {
   static const String governorates = "${baseUrl}governorates";
 
   static const String sendOrder = "${baseUrl}place-order";
+  static const String contactus = "${baseUrl}contact-us";
 }

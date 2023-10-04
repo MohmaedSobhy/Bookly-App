@@ -18,4 +18,6 @@ abstract class APIKey {
   static const String newPasswordConfirm = "new_password_confirmation";
   static const String categories = 'categories';
   static const String governorateId = 'governorate_id';
+  static const String message = "message";
+  static const String subject = "subject";
 }
