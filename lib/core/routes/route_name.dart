@@ -11,4 +11,5 @@ abstract class RoutesName {
   static const String userProfile = "User Profile";
   static const String sendOrder = "sendOrder";
   static const String contactUs = "Contact Us";
+  static const String orderHistory = "orderHistory";
 }

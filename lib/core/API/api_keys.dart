@@ -20,4 +20,5 @@ abstract class APIKey {
   static const String governorateId = 'governorate_id';
   static const String message = "message";
   static const String subject = "subject";
+  static const String orders = "orders";
 }

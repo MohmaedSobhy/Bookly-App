@@ -52,7 +52,9 @@ class SettingScreen extends StatelessWidget {
                 ListTitleSettingWidget(
                   txtTitle: AppString.paymentHistory,
                   leadingIcon: Icons.payment,
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(RoutesName.orderHistory);
+                  },
                   trailingWidget: const Icon(Icons.arrow_forward),
                 ),
                 ListTitleSettingWidget(
