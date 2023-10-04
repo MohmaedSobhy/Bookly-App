@@ -87,7 +87,7 @@ class OrderCubit extends Cubit<OrderState> {
 
   void sendOrder() async {
     String token = "";
-    print("send");
+
     await StorageHelper.getValue(key: APIKey.token).then((value) {
       token = value;
     });
@@ -101,6 +101,7 @@ class OrderCubit extends Cubit<OrderState> {
     }).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         print(response.body);
+        emit(SucessSendOrder());
       } else {
         print(response.body);
       }

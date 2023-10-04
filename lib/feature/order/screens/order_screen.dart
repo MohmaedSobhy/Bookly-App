@@ -1,3 +1,4 @@
+import 'package:books_app/core/routes/route_name.dart';
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/core/widgets/drop_down_items.dart';
@@ -27,7 +28,7 @@ class OrderScreen extends StatelessWidget {
             centerTitle: true,
             leading: IconButton(
               onPressed: () {
-                Get.back();
+                Get.offNamed(RoutesName.homelayout);
               },
               icon: const Icon(
                 Icons.arrow_back,
@@ -59,6 +60,7 @@ class OrderScreen extends StatelessWidget {
                 if (state is SucessSendOrder) {
                   return const SuccessSendOrderView();
                 }
+
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,

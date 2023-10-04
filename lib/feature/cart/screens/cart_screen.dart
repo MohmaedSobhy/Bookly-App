@@ -89,7 +89,7 @@ class CartScreen extends StatelessWidget {
                       ),
                       child: CustomButton(
                         onTap: () {
-                          Get.toNamed(RoutesName.sendOrder);
+                          Get.offNamed(RoutesName.sendOrder);
                         },
                         title: AppString.checkOut,
                         width: double.infinity,
