@@ -1,5 +1,7 @@
+import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
 import 'package:books_app/feature/order%20history/controller/order_history_cubit.dart';
 import 'package:books_app/feature/order%20history/controller/order_history_state.dart';
+import 'package:books_app/feature/order%20history/widgets/order_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -37,14 +39,44 @@ class OrderHistoryScreen extends StatelessWidget {
           ),
           elevation: 0.0,
         ),
-        body: BlocConsumer<OrderHistoryCubit, OrderHistoryState>(
-          listener: (context, state) {},
-          builder: (context, state) {
-            return ListView(
-              children: [],
-            );
-          },
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.sizeOf(context).width * 0.01,
+          ),
+          child: BlocConsumer<OrderHistoryCubit, OrderHistoryState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              if (state is LoadingHistoryOrders) {
+                return const CircleLoading();
+              }
+              if (state is FaildLoadHistory ||
+                  OrderHistoryCubit.getInstanse().orders.isEmpty) {
+                return const HistoryEmptyView();
+              }
+              return ListView.builder(
+                itemCount: OrderHistoryCubit.getInstanse().orders.length,
+                itemBuilder: (context, index) {
+                  return OrderItem(
+                    order: OrderHistoryCubit.getInstanse().orders[index],
+                  );
+                },
+              );
+            },
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class HistoryEmptyView extends StatelessWidget {
+  const HistoryEmptyView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Image(
+        image: AssetImage("images/clock.png"),
       ),
     );
   }

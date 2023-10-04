@@ -25,6 +25,7 @@ class OrderHistoryCubit extends Cubit<OrderHistoryState> {
   }
 
   void loadHistoryOrders() async {
+    orders.clear();
     emit(LoadingHistoryOrders());
     String token = "";
     await StorageHelper.getValue(key: APIKey.token).then((value) {
