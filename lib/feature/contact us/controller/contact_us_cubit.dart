@@ -7,7 +7,6 @@ import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:books_app/feature/contact%20us/controller/contact_us_state.dart';
 import 'package:flutter/material.dart';
 import 'package:synchronized/synchronized.dart';
-
 import '../../../core/localization/app_string.dart';
 
 class ContactUsCubit extends Cubit<ContactUsState> {
@@ -50,12 +49,8 @@ class ContactUsCubit extends Cubit<ContactUsState> {
     }).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         susessMessage();
-      } else {
-        print(response.body);
       }
-    }).catchError((error) {
-      print(error);
-    });
+    }).catchError((error) {});
   }
 
   void susessMessage() {
