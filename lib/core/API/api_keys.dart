@@ -2,6 +2,7 @@ abstract class APIKey {
   static const String token = "token";
   static const String email = "email";
   static const String phone = "phone";
+  static const String address = "address";
   static const String password = "password";
   static const String confirmPassword = "password_confirmation";
   static const String name = "name";
@@ -16,4 +17,5 @@ abstract class APIKey {
   static const String newPassword = "new_password";
   static const String newPasswordConfirm = "new_password_confirmation";
   static const String categories = 'categories';
+  static const String governorateId = 'governorate_id';
 }

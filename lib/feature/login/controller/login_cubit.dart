@@ -33,15 +33,14 @@ class LoginCubit extends Cubit<LoginState> {
     APIManager.postMethod(baseUrl: EndPoints.login, body: {
       APIKey.email: email.text.toString(),
       APIKey.password: password.text.toString(),
-    }).then((response) {
+    }).then((response) async {
       if (response.statusCode == 200) {
         ShowToast.showMessage(
           color: Colors.green,
           message: AppString.loginSuceeded,
         );
         Map<String, dynamic> json = jsonDecode(response.body);
-        StorageHelper.addKey(key: APIKey.token, value: json['data']['token']);
-
+        await _saveData(json['data']);
         emit(LoginSuccess());
       } else {
         _failedToLogin();
@@ -49,6 +48,26 @@ class LoginCubit extends Cubit<LoginState> {
     }).catchError((error) {
       _failedToLogin();
     });
+  }
+
+  Future<void> _saveData(Map<String, dynamic> json) async {
+    StorageHelper.addKey(key: APIKey.token, value: json['token']);
+    StorageHelper.addKey(
+      key: APIKey.name,
+      value: json['user'][APIKey.name],
+    );
+    StorageHelper.addKey(
+      key: APIKey.phone,
+      value: json['user'][APIKey.phone],
+    );
+    StorageHelper.addKey(
+      key: APIKey.address,
+      value: json['user'][APIKey.address],
+    );
+    StorageHelper.addKey(
+      key: APIKey.email,
+      value: json['user'][APIKey.email],
+    );
   }
 
   void _failedToLogin() {

@@ -26,4 +26,6 @@ abstract class EndPoints {
 
   static const String loadBookPages = "${baseUrl}products?page=";
   static const String governorates = "${baseUrl}governorates";
+
+  static const String sendOrder = "${baseUrl}place-order";
 }

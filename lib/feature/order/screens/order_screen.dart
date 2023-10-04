@@ -67,55 +67,66 @@ class OrderScreen extends StatelessWidget {
                       height: MediaQuery.sizeOf(context).height * 0.05,
                     ),
                     Expanded(
-                      child: ListView(
-                        children: [
-                          const SizedBoxHight(),
-                          CustomeTextFormField(
-                            controller: TextEditingController(),
-                            hint: AppString.name,
-                            textInputType: TextInputType.text,
-                            readOnly: true,
-                          ),
-                          const SizedBoxHight(),
-                          CustomeTextFormField(
-                            controller: TextEditingController(),
-                            hint: AppString.phone,
-                            textInputType: TextInputType.phone,
-                            onValidate: (value) {},
-                          ),
-                          const SizedBoxHight(),
-                          CustomeTextFormField(
-                            controller: TextEditingController(),
-                            hint: AppString.address,
-                            textInputType: TextInputType.text,
-                            onValidate: (value) {},
-                          ),
-                          const SizedBoxHight(),
-                          CustomeDropDownItmes(
-                            label: "City",
-                            options: OrderCubit.get().cities,
-                            selectedItem: OrderCubit.get().selectedItem,
-                            validator: (value) {},
-                            onChange: (value) {
-                              OrderCubit.get().selectedItem = value as String;
-                            },
-                          ),
-                          const SizedBoxHight(),
-                          ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: OrderCubit.get().books.length,
-                            itemBuilder: (_, index) {
-                              return ReceiptItem(
-                                bookCart: OrderCubit.get().books[index],
-                              );
-                            },
-                          )
-                        ],
+                      child: Form(
+                        key: OrderCubit.get().formkey,
+                        child: ListView(
+                          children: [
+                            const SizedBoxHight(),
+                            CustomeTextFormField(
+                              controller: OrderCubit.get().name,
+                              hint: AppString.name,
+                              textInputType: TextInputType.text,
+                              readOnly: true,
+                            ),
+                            const SizedBoxHight(),
+                            const SizedBoxHight(),
+                            CustomeTextFormField(
+                              controller: OrderCubit.get().address,
+                              hint: AppString.address,
+                              textInputType: TextInputType.text,
+                              onValidate: (value) {
+                                if (value.toString().isEmpty) {
+                                  return "Enter Address";
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBoxHight(),
+                            CustomeDropDownItmes(
+                              label: "City",
+                              options: OrderCubit.get().cities,
+                              selectedItem: OrderCubit.get().selectedItem,
+                              validator: (value) {
+                                if (OrderCubit.get().selectedItem.isEmpty) {
+                                  return "Select City";
+                                }
+                                return null;
+                              },
+                              onChange: (value) {
+                                OrderCubit.get().selectedItem = value as String;
+                              },
+                            ),
+                            const SizedBoxHight(),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: OrderCubit.get().books.length,
+                              itemBuilder: (_, index) {
+                                return ReceiptItem(
+                                  bookCart: OrderCubit.get().books[index],
+                                );
+                              },
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     CustomButton(
-                      onTap: () {},
+                      onTap: () {
+                        if (OrderCubit.get().formkey.currentState!.validate()) {
+                          OrderCubit.get().sendOrder();
+                        }
+                      },
                       width: double.infinity,
                       title: AppString.yourReceipt,
                     )
