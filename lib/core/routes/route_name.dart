@@ -9,4 +9,5 @@ abstract class RoutesName {
   static const String homelayout = "home layout";
   static const String updatePassword = "Update Password";
   static const String userProfile = "User Profile";
+  static const String sendOrder = "sendOrder";
 }

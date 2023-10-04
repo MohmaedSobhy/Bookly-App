@@ -40,4 +40,5 @@ abstract class AppString {
   static const String yourReceipt = "Your Receipt";
   static const String phone = "Phone";
   static const String address = "Address";
+  static const String addBookstoCart = "Add Books to your Cart";
 }

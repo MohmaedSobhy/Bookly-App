@@ -1,5 +1,6 @@
 import 'package:books_app/feature/Book%20Details/screen/book_details.dart';
 import 'package:books_app/feature/layout/screens/home_layout.dart';
+import 'package:books_app/feature/order/screens/order_screen.dart';
 import 'package:books_app/feature/update%20profile/screens/update_profile.dart';
 import 'package:books_app/feature/update_password/screens/update_password.dart';
 import 'package:books_app/feature/user%20profile/screens/user_profile_screen.dart';
@@ -35,6 +36,8 @@ class AppRouting {
         return MaterialPageRoute(builder: (_) => const UpdatePasswordScreen());
       case RoutesName.userProfile:
         return MaterialPageRoute(builder: (_) => const UserProfileScreen());
+      case RoutesName.sendOrder:
+        return MaterialPageRoute(builder: (_) => const OrderScreen());
     }
 
     return null;

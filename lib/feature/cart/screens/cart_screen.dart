@@ -1,13 +1,17 @@
 import 'package:books_app/core/theme/app_color.dart';
+import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
 import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/core/widgets/sized_box_high.dart';
 import 'package:books_app/feature/cart/controller/cart_cubit.dart';
 import 'package:books_app/feature/cart/controller/cart_state.dart';
+import 'package:books_app/feature/cart/views/empty_cart.dart';
 import 'package:books_app/feature/cart/widgets/book_item_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../../../core/localization/app_string.dart';
+import '../../../core/routes/route_name.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -27,6 +31,12 @@ class CartScreen extends StatelessWidget {
             child: BlocConsumer<CartCubit, CartState>(
               listener: (context, state) {},
               builder: (context, state) {
+                if (state is LoadingCartItems) {
+                  return const CircleLoading();
+                }
+                if (CartCubit.getInstanse().books.isEmpty) {
+                  return const EmptyCartView();
+                }
                 return Column(
                   children: [
                     Row(
@@ -78,7 +88,9 @@ class CartScreen extends StatelessWidget {
                         bottom: MediaQuery.sizeOf(context).height * 0.01,
                       ),
                       child: CustomButton(
-                        onTap: () {},
+                        onTap: () {
+                          Get.toNamed(RoutesName.sendOrder);
+                        },
                         title: AppString.checkOut,
                         width: double.infinity,
                         backGroundColor: AppColor.darkBlue,

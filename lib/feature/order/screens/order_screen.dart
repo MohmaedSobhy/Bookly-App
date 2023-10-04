@@ -5,9 +5,14 @@ import 'package:books_app/core/widgets/sized_box_high.dart';
 import 'package:books_app/core/widgets/text_field.dart';
 import 'package:books_app/feature/order/controller/order_cubit.dart';
 import 'package:books_app/feature/order/controller/order_state.dart';
+import 'package:books_app/feature/order/views/success_send_order.dart';
+import 'package:books_app/feature/order/widgets/receipt_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import '../../../core/localization/app_string.dart';
+import '../../../core/widgets/cricle_progress_indicator.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key});
@@ -18,6 +23,29 @@ class OrderScreen extends StatelessWidget {
       value: OrderCubit.get()..loadData(),
       child: SafeArea(
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            centerTitle: true,
+            leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+                color: AppColor.darkBlue,
+              ),
+            ),
+            title: const Text(
+              AppString.yourReceipt,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: AppColor.darkBlue,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            elevation: 0.0,
+          ),
           body: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.sizeOf(context).width * 0.02,
@@ -27,9 +55,10 @@ class OrderScreen extends StatelessWidget {
               listener: (context, state) {},
               builder: (context, state) {
                 if (state is LoadingData || state is OrderInitial) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const CircleLoading();
+                }
+                if (state is SucessSendOrder) {
+                  return const SuccessSendOrderView();
                 }
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -41,17 +70,6 @@ class OrderScreen extends StatelessWidget {
                     Expanded(
                       child: ListView(
                         children: [
-                          const Center(
-                            child: Text(
-                              AppString.yourReceipt,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: AppColor.darkBlue,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
                           const SizedBoxHight(),
                           CustomeTextFormField(
                             controller: TextEditingController(),
@@ -83,6 +101,17 @@ class OrderScreen extends StatelessWidget {
                               OrderCubit.get().selectedItem = value as String;
                             },
                           ),
+                          const SizedBoxHight(),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: OrderCubit.get().books.length,
+                            itemBuilder: (_, index) {
+                              return ReceiptItem(
+                                bookCart: OrderCubit.get().books[index],
+                              );
+                            },
+                          )
                         ],
                       ),
                     ),

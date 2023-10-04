@@ -1,4 +1,5 @@
 import 'dart:convert';
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:books_app/core/API/api.dart';
 import 'package:books_app/core/API/end_points.dart';
@@ -36,7 +37,7 @@ class OrderCubit extends Cubit<OrderState> {
     books.clear();
     cities.clear();
     emit(LoadingData());
-    await Future.wait([loadCities()]);
+    await Future.wait([loadCities(), loadBooks()]);
     if (cities.isNotEmpty) {
       selectedItem = cities[0];
       emit(SussessLoadData());
@@ -69,4 +70,6 @@ class OrderCubit extends Cubit<OrderState> {
       }
     }).catchError((error) {});
   }
+
+  void sendOrder() {}
 }
