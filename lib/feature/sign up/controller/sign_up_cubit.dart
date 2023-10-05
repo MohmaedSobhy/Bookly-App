@@ -19,6 +19,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confrimePassword = TextEditingController();
 
@@ -40,6 +41,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       APIKey.name: name.text.toString(),
       APIKey.email: email.text.toString(),
       APIKey.password: password.text.toString(),
+      APIKey.phone: phone.text.toString(),
       APIKey.confirmPassword: confrimePassword.text.toString(),
     }).then((response) {
       if (response.statusCode == 201) {

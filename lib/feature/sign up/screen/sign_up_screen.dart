@@ -66,6 +66,18 @@ class SignUpScreeen extends StatelessWidget {
                       ),
                       const SizedBoxHight(),
                       CustomeTextFormField(
+                        controller: SignUpCubit.get(context).phone,
+                        hint: AppString.email,
+                        textInputType: TextInputType.phone,
+                        onValidate: (value) {
+                          if (value.toString().isEmpty) {
+                            return "Enter your Phone";
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBoxHight(),
+                      CustomeTextFormField(
                         controller: SignUpCubit.get(context).password,
                         hint: AppString.password,
                         textInputType: TextInputType.visiblePassword,

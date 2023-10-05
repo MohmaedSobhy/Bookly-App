@@ -3,7 +3,6 @@ import 'package:books_app/feature/contact%20us/screen/contact_screen.dart';
 import 'package:books_app/feature/layout/screens/home_layout.dart';
 import 'package:books_app/feature/order%20history/screens/order_history.dart';
 import 'package:books_app/feature/order/screens/order_screen.dart';
-import 'package:books_app/feature/update%20profile/screens/update_profile.dart';
 import 'package:books_app/feature/update_password/screens/update_password.dart';
 import 'package:books_app/feature/user%20profile/screens/user_profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +24,6 @@ class AppRouting {
         return MaterialPageRoute(builder: (_) => const OnbordingScreen());
       case RoutesName.ottp:
         return MaterialPageRoute(builder: (_) => const OttpScreen());
-      case RoutesName.updateProfile:
-        return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
       case RoutesName.bookDetails:
         Book book = settings.arguments as Book;
         return MaterialPageRoute(

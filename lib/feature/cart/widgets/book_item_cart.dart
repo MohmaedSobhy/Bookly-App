@@ -7,6 +7,7 @@ class BookCartItem extends StatelessWidget {
   final VoidCallback onDelete;
   final VoidCallback increment;
   final VoidCallback decrement;
+
   final int quantity;
 
   const BookCartItem({
@@ -50,53 +51,55 @@ class BookCartItem extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               vertical: MediaQuery.sizeOf(context).height * 0.01,
             ),
-            child: SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.3,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    book.itemProductName ?? '',
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      color: AppColor.darkBlue,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).height * 0.01,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
+            child: Expanded(
+              child: SizedBox(
+                width: MediaQuery.sizeOf(context).width * 0.3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      book.itemProductName ?? '',
+                      overflow: TextOverflow.visible,
+                      style: const TextStyle(
                         color: AppColor.darkBlue,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: increment,
-                          icon: const Icon(Icons.add),
-                        ),
-                        Text(
-                          "$quantity",
-                          style: const TextStyle(
-                            color: AppColor.darkBlue,
-                            fontSize: 20,
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: decrement,
-                          icon: const Icon(Icons.remove),
-                        ),
-                      ],
+                    SizedBox(
+                      height: MediaQuery.sizeOf(context).height * 0.01,
                     ),
-                  ),
-                  SizedBox(
-                    height: MediaQuery.sizeOf(context).height * 0.01,
-                  ),
-                ],
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: AppColor.darkBlue,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: increment,
+                            icon: const Icon(Icons.add),
+                          ),
+                          Text(
+                            "$quantity",
+                            style: const TextStyle(
+                              color: AppColor.darkBlue,
+                              fontSize: 20,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: decrement,
+                            icon: const Icon(Icons.remove),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.sizeOf(context).height * 0.01,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

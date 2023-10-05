@@ -30,4 +30,6 @@ abstract class EndPoints {
   static const String sendOrder = "${baseUrl}place-order";
   static const String contactus = "${baseUrl}contact-us";
   static const String orderHistory = "${baseUrl}order-history";
+
+  static const String updateProfile = "${baseUrl}update-profile";
 }

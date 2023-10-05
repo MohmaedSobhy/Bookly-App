@@ -1,4 +1,8 @@
+import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
+import 'package:books_app/feature/user%20profile/controller/profile_cubit.dart';
+import 'package:books_app/feature/user%20profile/controller/profile_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/localization/app_string.dart';
 import '../../../core/theme/app_color.dart';
@@ -13,63 +17,74 @@ class UserProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.sizeOf(context).width * 0.02,
-            vertical: MediaQuery.sizeOf(context).height * 0.05,
-          ),
-          child: Column(
-            children: [
-              const ImageProfile(),
-              Expanded(
-                child: ListView(
-                  children: [
-                    const SizedBoxHight(),
-                    CustomeTextFormField(
-                      controller: TextEditingController(),
-                      hint: "Name",
-                      textInputType: TextInputType.name,
-                      readOnly: true,
-                    ),
-                    const SizedBoxHight(),
-                    CustomeTextFormField(
-                      controller: TextEditingController(),
-                      hint: "Email",
-                      textInputType: TextInputType.emailAddress,
-                      readOnly: true,
-                    ),
-                    const SizedBoxHight(),
-                    CustomeTextFormField(
-                      controller: TextEditingController(),
-                      hint: "Phone",
-                      textInputType: TextInputType.phone,
-                      readOnly: true,
-                    ),
-                    const SizedBoxHight(),
-                    CustomeTextFormField(
-                      controller: TextEditingController(),
-                      hint: "City",
-                      textInputType: TextInputType.text,
-                      readOnly: true,
-                    ),
-                    const SizedBoxHight(),
-                    CustomeTextFormField(
-                      controller: TextEditingController(),
-                      hint: "Address",
-                      textInputType: TextInputType.text,
-                      readOnly: true,
-                    ),
-                  ],
-                ),
-              ),
-              CustomButton(
-                onTap: () {},
-                title: AppString.updateProfile,
-                backGroundColor: AppColor.darkBlue,
-                width: double.infinity,
-              )
-            ],
+      child: BlocProvider.value(
+        value: ProfileCubit.getInstanse()..loadingInfo(),
+        child: Scaffold(
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.sizeOf(context).width * 0.02,
+              vertical: MediaQuery.sizeOf(context).height * 0.05,
+            ),
+            child: BlocConsumer<ProfileCubit, ProfileState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                if (state is LoadProfileInfo) {
+                  return const CircleLoading();
+                }
+                return Form(
+                  key: ProfileCubit.getInstanse().formkey,
+                  child: Column(
+                    children: [
+                      const ImageProfile(),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            const SizedBoxHight(),
+                            CustomeTextFormField(
+                              controller:
+                                  ProfileCubit.getInstanse().nameController,
+                              hint: "Name",
+                              textInputType: TextInputType.name,
+                              readOnly: ProfileCubit.getInstanse().readOnly,
+                            ),
+                            const SizedBoxHight(),
+                            CustomeTextFormField(
+                              controller:
+                                  ProfileCubit.getInstanse().emailController,
+                              hint: "Email",
+                              textInputType: TextInputType.emailAddress,
+                              readOnly: true,
+                            ),
+                            const SizedBoxHight(),
+                            CustomeTextFormField(
+                              controller:
+                                  ProfileCubit.getInstanse().phoneController,
+                              hint: "Phone",
+                              textInputType: TextInputType.phone,
+                              readOnly: ProfileCubit.getInstanse().readOnly,
+                            ),
+                            const SizedBoxHight(),
+                            CustomeTextFormField(
+                              controller:
+                                  ProfileCubit.getInstanse().phoneController,
+                              hint: "Phone",
+                              textInputType: TextInputType.phone,
+                              readOnly: ProfileCubit.getInstanse().readOnly,
+                            ),
+                          ],
+                        ),
+                      ),
+                      CustomButton(
+                        onTap: () {},
+                        title: AppString.updateProfile,
+                        backGroundColor: AppColor.darkBlue,
+                        width: double.infinity,
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),
