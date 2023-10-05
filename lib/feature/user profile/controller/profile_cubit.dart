@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:books_app/core/API/api.dart';
 import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/API/end_points.dart';
 import 'package:books_app/core/data/shared_date.dart';
+import 'package:books_app/core/localization/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:synchronized/synchronized.dart';
 import 'profile_state.dart';
@@ -15,6 +17,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   bool readOnly = true;
   List<String> cities = [];
   List<String> citiresId = [];
+  String textButton = AppString.updateProfile;
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -22,6 +25,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   TextEditingController addressController = TextEditingController();
 
   static ProfileCubit? profileCubit;
+  File? imageProfile;
   static final Lock lock = Lock();
 
   static ProfileCubit getInstanse() {
@@ -36,7 +40,9 @@ class ProfileCubit extends Cubit<ProfileState> {
   void loadingInfo() async {
     emit(LoadProfileInfo());
     profileScreen = false;
-    await Future.wait([getPhone(), getAddres(), loadCities()]);
+    await Future.wait(
+        [getPhone(), getAddres(), loadCities(), getName(), getEmail()]);
+
     if (cities.isNotEmpty) {
       emit(SucessLoadingProfileInfo());
     }
@@ -56,7 +62,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> getPhone() async {
-    await StorageHelper.getValue(key: APIKey.name).then((value) {
+    await StorageHelper.getValue(key: APIKey.phone).then((value) {
       phoneController.text = value;
     });
   }
@@ -109,6 +115,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       _updateUserProfile();
     } else {
       profileScreen = true;
+      readOnly = false;
       emit(ProfileInitial());
     }
   }

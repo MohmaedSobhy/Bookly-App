@@ -3,13 +3,11 @@ import 'package:books_app/feature/user%20profile/controller/profile_cubit.dart';
 import 'package:books_app/feature/user%20profile/controller/profile_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../core/localization/app_string.dart';
 import '../../../core/theme/app_color.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/sized_box_high.dart';
 import '../../../core/widgets/text_field.dart';
-import '../widgets/image_profile.dart';
+import '../views/image_profile.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -35,7 +33,13 @@ class UserProfileScreen extends StatelessWidget {
                   key: ProfileCubit.getInstanse().formkey,
                   child: Column(
                     children: [
-                      const ImageProfile(),
+                      ImageProfile(
+                        condition: true,
+                        imageFile: ProfileCubit.getInstanse().imageProfile,
+                        onTap: () {
+                          print("Hello World");
+                        },
+                      ),
                       Expanded(
                         child: ListView(
                           children: [
@@ -66,17 +70,19 @@ class UserProfileScreen extends StatelessWidget {
                             const SizedBoxHight(),
                             CustomeTextFormField(
                               controller:
-                                  ProfileCubit.getInstanse().phoneController,
-                              hint: "Phone",
-                              textInputType: TextInputType.phone,
+                                  ProfileCubit.getInstanse().addressController,
+                              hint: "Adress",
+                              textInputType: TextInputType.text,
                               readOnly: ProfileCubit.getInstanse().readOnly,
                             ),
                           ],
                         ),
                       ),
                       CustomButton(
-                        onTap: () {},
-                        title: AppString.updateProfile,
+                        onTap: () {
+                          ProfileCubit.getInstanse().updateButton();
+                        },
+                        title: ProfileCubit.getInstanse().textButton,
                         backGroundColor: AppColor.darkBlue,
                         width: double.infinity,
                       )
