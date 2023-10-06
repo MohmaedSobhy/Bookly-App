@@ -1,4 +1,6 @@
+import 'package:books_app/core/routes/route_name.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/localization/app_string.dart';
 import '../../../core/widgets/custom_button.dart';
@@ -70,7 +72,10 @@ class _OnbordingScreenState extends State<OnbordingScreen> {
             Visibility(
               visible: currentIndex == boardingContents.length - 1,
               child: CustomButton(
-                onTap: () {},
+                onTap: () {
+                  print("hello");
+                  Get.offAllNamed(RoutesName.login);
+                },
                 title: AppString.getStartit,
               ),
             ),

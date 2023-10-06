@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:books_app/core/model/book.dart';
 import 'package:books_app/core/service/book_service.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchronized/synchronized.dart';
 import '../../../core/localization/app_string.dart';

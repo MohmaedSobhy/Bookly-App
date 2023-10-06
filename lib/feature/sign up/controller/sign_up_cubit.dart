@@ -43,10 +43,12 @@ class SignUpCubit extends Cubit<SignUpState> {
       APIKey.password: password.text.toString(),
       APIKey.phone: phone.text.toString(),
       APIKey.confirmPassword: confrimePassword.text.toString(),
-    }).then((response) {
+    }).then((response) async {
       if (response.statusCode == 201) {
         ShowToast.sucuessMessage(message: AppString.signUpSucceeded);
-        _saveToken(response);
+        Map<String, dynamic> data = jsonDecode(response.body);
+        await _saveData(data['data']);
+        print("hello");
         emit(SignUpSucceed());
       } else {
         _failedToSignUp();
@@ -56,9 +58,24 @@ class SignUpCubit extends Cubit<SignUpState> {
     });
   }
 
-  void _saveToken(Response response) {
-    Map<String, dynamic> json = jsonDecode(response.body);
-    StorageHelper.addKey(key: APIKey.token, value: json['data']['token']);
+  Future<void> _saveData(Map<String, dynamic> json) async {
+    StorageHelper.addKey(key: APIKey.token, value: json['token']);
+    StorageHelper.addKey(
+      key: APIKey.name,
+      value: json['user'][APIKey.name],
+    );
+    StorageHelper.addKey(
+      key: APIKey.phone,
+      value: json['user'][APIKey.phone],
+    );
+    StorageHelper.addKey(
+      key: APIKey.address,
+      value: json['user'][APIKey.address],
+    );
+    StorageHelper.addKey(
+      key: APIKey.email,
+      value: json['user'][APIKey.email],
+    );
   }
 
   void _failedToSignUp() {

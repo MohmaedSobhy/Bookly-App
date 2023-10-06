@@ -43,9 +43,9 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  void _naviagate() {
+  void _naviagate() async {
     bool check = false;
-    StorageHelper.isKeyExist(APIKey.token).then((value) {
+    await StorageHelper.isKeyExist(APIKey.token).then((value) {
       check = value;
     });
     if (check) {

@@ -117,7 +117,9 @@ class SignUpScreeen extends StatelessWidget {
                       const SizedBoxHight(),
                       CustomButton(
                         backGroundColor: AppColor.darkBlue,
-                        onTap: () {},
+                        onTap: () {
+                          Get.offAllNamed(RoutesName.login);
+                        },
                         title: AppString.login,
                       ),
                     ],

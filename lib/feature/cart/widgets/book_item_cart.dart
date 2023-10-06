@@ -57,6 +57,7 @@ class BookCartItem extends StatelessWidget {
                 children: [
                   Text(
                     book.itemProductName ?? '',
+                    maxLines: 1,
                     overflow: TextOverflow.visible,
                     style: const TextStyle(
                       color: AppColor.darkBlue,

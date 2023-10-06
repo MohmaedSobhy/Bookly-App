@@ -18,8 +18,8 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocProvider(
-        create: (context) => LoginCubit(),
+      child: BlocProvider.value(
+        value: LoginCubit.getInstanse(),
         child: Scaffold(
           body: BlocConsumer<LoginCubit, LoginState>(
             listener: (context, state) {
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
             },
             builder: (context, state) {
               return Form(
-                key: LoginCubit.get(context).formkey,
+                key: LoginCubit.getInstanse().formkey,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.sizeOf(context).width * 0.03,
@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                         height: MediaQuery.sizeOf(context).height * 0.10,
                       ),
                       CustomeTextFormField(
-                        controller: LoginCubit.get(context).email,
+                        controller: LoginCubit.getInstanse().email,
                         hint: AppString.email,
                         textInputType: TextInputType.emailAddress,
                         onValidate: (value) {
@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       const SizedBoxHight(),
                       CustomeTextFormField(
-                        controller: LoginCubit.get(context).password,
+                        controller: LoginCubit.getInstanse().password,
                         hint: AppString.password,
                         textInputType: TextInputType.visiblePassword,
                         onValidate: (value) {
@@ -68,11 +68,11 @@ class LoginScreen extends StatelessWidget {
                       const SizedBoxHight(),
                       CustomButton(
                         onTap: () {
-                          if (LoginCubit.get(context)
+                          if (LoginCubit.getInstanse()
                               .formkey
                               .currentState!
                               .validate()) {
-                            LoginCubit.get(context).loginMethod();
+                            LoginCubit.getInstanse().loginMethod();
                           }
                         },
                         title: AppString.login,

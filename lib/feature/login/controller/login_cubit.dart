@@ -18,10 +18,10 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit? loginCubit;
   static final Lock _lock = Lock();
 
-  static LoginCubit get(context) {
+  static LoginCubit getInstanse() {
     if (loginCubit == null) {
       _lock.synchronized(() {
-        loginCubit ??= BlocProvider.of(context);
+        loginCubit ??= LoginCubit();
       });
     }
     return loginCubit!;
