@@ -25,6 +25,7 @@ INJECTED from F:\MobIVerse\booky_app\android\app\src\main\AndroidManifest.xml:1:
 MERGED from F:\MobIVerse\booky_app\android\app\src\main\AndroidManifest.xml:1:1-33:12
 MERGED from [:image_picker_android] F:\MobIVerse\booky_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] F:\MobIVerse\booky_app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:modal_progress_hud_nsn] F:\MobIVerse\booky_app\build\modal_progress_hud_nsn\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:fluttertoast] F:\MobIVerse\booky_app\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] F:\MobIVerse\booky_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_secure_storage] F:\MobIVerse\booky_app\build\flutter_secure_storage\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
@@ -77,6 +78,8 @@ MERGED from [:image_picker_android] F:\MobIVerse\booky_app\build\image_picker_an
 MERGED from [:image_picker_android] F:\MobIVerse\booky_app\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] F:\MobIVerse\booky_app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] F:\MobIVerse\booky_app\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:modal_progress_hud_nsn] F:\MobIVerse\booky_app\build\modal_progress_hud_nsn\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:modal_progress_hud_nsn] F:\MobIVerse\booky_app\build\modal_progress_hud_nsn\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:fluttertoast] F:\MobIVerse\booky_app\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:fluttertoast] F:\MobIVerse\booky_app\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:path_provider_android] F:\MobIVerse\booky_app\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
 import 'package:synchronized/synchronized.dart';
 
 import '../../../core/API/api.dart';
@@ -21,7 +22,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confrimePassword = TextEditingController();
-
+  bool loading = false;
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   static SignUpCubit getInstanse() {
@@ -36,6 +37,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit() : super(SignUpInitial());
 
   void signUpMethod() {
+    loading = true;
     APIManager.postMethod(baseUrl: EndPoints.signUp, body: {
       APIKey.name: name.text.toString(),
       APIKey.email: email.text.toString(),
@@ -43,11 +45,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       APIKey.phone: phone.text.toString(),
       APIKey.confirmPassword: confrimePassword.text.toString(),
     }).then((response) async {
-      if (response.statusCode == 201) {
-        ShowToast.sucuessMessage(message: AppString.signUpSucceeded);
-        Map<String, dynamic> data = jsonDecode(response.body);
-        await _saveData(data['data']);
-        print("hello");
+      if (response.statusCode == 201 || response.statusCode == 200) {
+        _signInSuscess(response);
         emit(SignUpSucceed());
       } else {
         _failedToSignUp();
@@ -55,6 +54,14 @@ class SignUpCubit extends Cubit<SignUpState> {
     }).catchError((error) {
       _failedToSignUp();
     });
+  }
+
+  void _signInSuscess(Response response) async {
+    ShowToast.sucuessMessage(message: AppString.signUpSucceeded);
+    Map<String, dynamic> data = jsonDecode(response.body);
+    await _saveData(data['data']);
+    loading = false;
+    _clearFields();
   }
 
   Future<void> _saveData(Map<String, dynamic> json) async {
@@ -77,7 +84,16 @@ class SignUpCubit extends Cubit<SignUpState> {
     );
   }
 
+  void _clearFields() {
+    name.text = "";
+    email.text = "";
+    password.text = "";
+    confrimePassword.text = "";
+    phone.text = "";
+  }
+
   void _failedToSignUp() {
+    loading = false;
     ShowToast.errorMessage(
       message: AppString.emailExist,
     );

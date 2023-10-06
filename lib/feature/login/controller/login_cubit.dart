@@ -4,6 +4,7 @@ import 'package:books_app/core/data/shared_date.dart';
 import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
 import 'package:synchronized/synchronized.dart';
 import '../../../core/API/api_keys.dart';
 import '../../../core/API/end_points.dart';
@@ -14,6 +15,7 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  bool loading = false;
 
   static LoginCubit? loginCubit;
   static final Lock _lock = Lock();
@@ -30,23 +32,33 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitial());
 
   void loginMethod() {
+    loading = true;
+    emit(LoginLoading());
     APIManager.postMethod(baseUrl: EndPoints.login, body: {
       APIKey.email: email.text.toString(),
       APIKey.password: password.text.toString(),
     }).then((response) async {
       if (response.statusCode == 200) {
-        ShowToast.sucuessMessage(
-          message: AppString.loginSuceeded,
-        );
-        Map<String, dynamic> json = jsonDecode(response.body);
-        await _saveData(json['data']);
+        _loginSucess(response);
         emit(LoginSuccess());
       } else {
+        loading = false;
         _failedToLogin();
       }
     }).catchError((error) {
+      loading = false;
       _failedToLogin();
     });
+  }
+
+  void _loginSucess(Response response) async {
+    ShowToast.sucuessMessage(
+      message: AppString.loginSuceeded,
+    );
+    Map<String, dynamic> json = jsonDecode(response.body);
+    await _saveData(json['data']);
+    loading = false;
+    _clearFaildes();
   }
 
   Future<void> _saveData(Map<String, dynamic> json) async {
@@ -67,6 +79,11 @@ class LoginCubit extends Cubit<LoginState> {
       key: APIKey.email,
       value: json['user'][APIKey.email],
     );
+  }
+
+  void _clearFaildes() {
+    email.text = "";
+    password.text = "";
   }
 
   void _failedToLogin() {
