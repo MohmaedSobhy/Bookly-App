@@ -34,10 +34,11 @@ class UserProfileScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       ImageProfile(
-                        condition: true,
+                        condition:
+                            ProfileCubit.getInstanse().imageProfile == null,
                         imageFile: ProfileCubit.getInstanse().imageProfile,
                         onTap: () {
-                          print("Hello World");
+                          ProfileCubit.getInstanse().pickImage();
                         },
                       ),
                       Expanded(

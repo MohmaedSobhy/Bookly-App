@@ -7,8 +7,6 @@ import 'package:books_app/core/API/end_points.dart';
 import 'package:books_app/core/data/shared_date.dart';
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:synchronized/synchronized.dart';
 import 'profile_state.dart';
@@ -139,8 +137,9 @@ class ProfileCubit extends Cubit<ProfileState> {
     StorageHelper.addKey(key: APIKey.address, value: addressController.text);
   }
 
-  void imagePicker() async {
+  void pickImage() async {
     imageProfile = await _pickImage();
+    emit(PickImageState());
   }
 
   Future<File?> _pickImage() async {
