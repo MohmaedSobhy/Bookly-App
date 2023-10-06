@@ -7,6 +7,7 @@ import 'package:books_app/core/API/end_points.dart';
 import 'package:books_app/core/data/shared_date.dart';
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:synchronized/synchronized.dart';
 import 'profile_state.dart';
 
@@ -118,5 +119,18 @@ class ProfileCubit extends Cubit<ProfileState> {
       readOnly = false;
       emit(ProfileInitial());
     }
+  }
+
+  void imagePicker() async {
+    imageProfile = await _pickImage();
+  }
+
+  Future<File?> _pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      return File(pickedImage.path);
+    }
+    return null;
   }
 }

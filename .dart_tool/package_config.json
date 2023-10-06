@@ -248,6 +248,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "image_pickers",
+      "rootUri": "file:///C:/Users/3LAMYA/AppData/Local/Pub/Cache/hosted/pub.dev/image_pickers-2.0.4+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "js",
       "rootUri": "file:///C:/Users/3LAMYA/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
       "packageUri": "lib/",
@@ -452,7 +458,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-10-05T15:17:18.332354Z",
+  "generated": "2023-10-05T15:38:17.512985Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }
