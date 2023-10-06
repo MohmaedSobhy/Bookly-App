@@ -5,6 +5,7 @@ import 'package:books_app/core/API/api.dart';
 import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/API/end_points.dart';
 import 'package:books_app/core/data/shared_date.dart';
+import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -111,13 +112,17 @@ class ProfileCubit extends Cubit<ProfileState> {
       (response) async {
         if (response.statusCode == 200 || response.statusCode == 201) {
           await _saveChange();
+          ShowToast.showMessage(
+            color: Colors.green,
+            message: AppString.updateSucceed,
+          );
           emit(ProfileUpdateSuccessfully());
         } else {}
       },
     ).catchError((error) {});
   }
 
-  void updateButton() {
+  void buttonOnPressed() {
     if (profileScreen) {
       profileScreen = false;
       readOnly = false;

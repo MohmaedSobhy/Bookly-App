@@ -81,7 +81,7 @@ class UserProfileScreen extends StatelessWidget {
                       ),
                       CustomButton(
                         onTap: () {
-                          ProfileCubit.getInstanse().updateButton();
+                          ProfileCubit.getInstanse().buttonOnPressed();
                         },
                         title: ProfileCubit.getInstanse().textButton,
                         backGroundColor: AppColor.darkBlue,
