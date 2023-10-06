@@ -89,9 +89,8 @@ class SearchCubit extends Cubit<SearchState> {
   void addToCart({required int index}) {
     BookService.addTocart(id: selected[index].id!).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
-        ShowToast.showMessage(
+        ShowToast.sucuessMessage(
           message: AppString.addToCartSucess,
-          color: Colors.green,
         );
       } else {
         ShowToast.errorMessage();

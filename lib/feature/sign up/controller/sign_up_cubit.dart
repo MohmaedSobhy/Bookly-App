@@ -45,8 +45,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       APIKey.confirmPassword: confrimePassword.text.toString(),
     }).then((response) {
       if (response.statusCode == 201) {
-        ShowToast.showMessage(
-            color: Colors.green, message: AppString.signUpSucceeded);
+        ShowToast.sucuessMessage(message: AppString.signUpSucceeded);
         _saveToken(response);
         emit(SignUpSucceed());
       } else {
@@ -63,8 +62,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   void _failedToSignUp() {
-    ShowToast.showMessage(
-      color: Colors.red,
+    ShowToast.errorMessage(
       message: AppString.emailExist,
     );
     emit(FailedToSignUp());

@@ -4,19 +4,27 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../localization/app_string.dart';
 
 abstract class ShowToast {
-  static void showMessage({required String message, required Color color}) {
+  static void sucuessMessage({required String message}) {
     Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
-      backgroundColor: color,
+      backgroundColor: Colors.green,
       textColor: Colors.white,
       fontSize: 16.0,
     );
   }
 
-  static errorMessage() {
-    ShowToast.showMessage(message: AppString.errorMessage, color: Colors.red);
+  static errorMessage({String? message}) {
+    Fluttertoast.showToast(
+      msg: (message == null) ? AppString.errorMessage : message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
   }
 }

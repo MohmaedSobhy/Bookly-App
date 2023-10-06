@@ -49,8 +49,7 @@ class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
   }
 
   void _failedToUpdatePassword() {
-    ShowToast.showMessage(
-      color: Colors.red,
+    ShowToast.sucuessMessage(
       message: AppString.failedToUpdatePassword,
     );
     emit(UpdatePasswordFailedState());
@@ -60,8 +59,7 @@ class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
     oldPasswordController.text = "";
     newPasswordController.text = "";
     confirmeNewPasswordController.text = "";
-    ShowToast.showMessage(
-      color: Colors.green,
+    ShowToast.sucuessMessage(
       message: AppString.successToUpdatePassword,
     );
     emit(UpdatePasswordSuccefullyState());

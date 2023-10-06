@@ -1,6 +1,5 @@
 import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:books_app/core/service/book_service.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchronized/synchronized.dart';
 import '../../../core/localization/app_string.dart';
@@ -23,8 +22,9 @@ class BookDetailsCubit extends Cubit<BookDetailsState> {
   void addToCart({required int bookId}) {
     BookService.addTocart(id: bookId).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
-        ShowToast.showMessage(
-            message: AppString.addToCartSucess, color: Colors.green);
+        ShowToast.sucuessMessage(
+          message: AppString.addToCartSucess,
+        );
       } else {
         _failedMessage();
       }
@@ -37,9 +37,8 @@ class BookDetailsCubit extends Cubit<BookDetailsState> {
     BookService.addtoWishList(id: bookId).then(
       (response) {
         if (response.statusCode == 200 || response.statusCode == 201) {
-          ShowToast.showMessage(
+          ShowToast.sucuessMessage(
             message: AppString.addToWishSucess,
-            color: Colors.green,
           );
         } else {
           _failedMessage();
@@ -53,6 +52,6 @@ class BookDetailsCubit extends Cubit<BookDetailsState> {
   }
 
   void _failedMessage() {
-    ShowToast.showMessage(message: AppString.errorMessage, color: Colors.red);
+    ShowToast.errorMessage();
   }
 }

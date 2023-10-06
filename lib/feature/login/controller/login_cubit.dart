@@ -35,8 +35,7 @@ class LoginCubit extends Cubit<LoginState> {
       APIKey.password: password.text.toString(),
     }).then((response) async {
       if (response.statusCode == 200) {
-        ShowToast.showMessage(
-          color: Colors.green,
+        ShowToast.sucuessMessage(
           message: AppString.loginSuceeded,
         );
         Map<String, dynamic> json = jsonDecode(response.body);
@@ -71,10 +70,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void _failedToLogin() {
-    ShowToast.showMessage(
-      color: Colors.red,
-      message: AppString.errorMessage,
-    );
+    ShowToast.errorMessage();
     emit(FailedLogin());
   }
 }

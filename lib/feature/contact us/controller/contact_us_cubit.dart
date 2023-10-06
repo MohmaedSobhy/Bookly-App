@@ -54,8 +54,7 @@ class ContactUsCubit extends Cubit<ContactUsState> {
   }
 
   void susessMessage() {
-    ShowToast.showMessage(
-        message: AppString.sendFeedBackSucess, color: Colors.green);
+    ShowToast.sucuessMessage(message: AppString.sendFeedBackSucess);
     message.text = "";
     subject.text = "";
     emit(ContactSucess());

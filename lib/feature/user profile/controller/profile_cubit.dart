@@ -112,8 +112,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       (response) async {
         if (response.statusCode == 200 || response.statusCode == 201) {
           await _saveChange();
-          ShowToast.showMessage(
-            color: Colors.green,
+          ShowToast.sucuessMessage(
             message: AppString.updateSucceed,
           );
           emit(ProfileUpdateSuccessfully());
