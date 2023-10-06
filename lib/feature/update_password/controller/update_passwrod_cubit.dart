@@ -5,6 +5,7 @@ import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:synchronized/synchronized.dart';
 import '../../../core/API/end_points.dart';
 import 'update_password_state.dart';
 
@@ -14,11 +15,17 @@ class UpdatePasswordCubit extends Cubit<UpdatePasswordState> {
   TextEditingController confirmeNewPasswordController = TextEditingController();
 
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
+  static UpdatePasswordCubit? updatePasswordCubit;
+  static final Lock lock = Lock();
   UpdatePasswordCubit() : super(UpdatePasswordInitialState());
 
-  static UpdatePasswordCubit get(context) {
-    return BlocProvider.of(context);
+  static UpdatePasswordCubit get() {
+    if (updatePasswordCubit == null) {
+      lock.synchronized(() {
+        updatePasswordCubit ??= UpdatePasswordCubit();
+      });
+    }
+    return updatePasswordCubit!;
   }
 
   void updatePassword() async {

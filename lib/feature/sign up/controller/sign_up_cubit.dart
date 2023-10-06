@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:synchronized/synchronized.dart';
 
 import '../../../core/API/api.dart';
@@ -25,10 +24,10 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
-  static SignUpCubit get(context) {
+  static SignUpCubit getInstanse() {
     if (signUpCubit == null) {
       _lock.synchronized(() {
-        signUpCubit ??= BlocProvider.of(context);
+        signUpCubit ??= SignUpCubit();
       });
     }
     return signUpCubit!;

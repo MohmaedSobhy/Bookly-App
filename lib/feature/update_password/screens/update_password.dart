@@ -15,13 +15,11 @@ class UpdatePasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UpdatePasswordCubit(),
+    return BlocProvider.value(
+      value: UpdatePasswordCubit.get(),
       child: BlocConsumer<UpdatePasswordCubit, UpdatePasswordState>(
         listener: (context, state) {},
         builder: (context, state) {
-          UpdatePasswordCubit settingScreenCubit =
-              UpdatePasswordCubit.get(context);
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -45,7 +43,7 @@ class UpdatePasswordScreen extends StatelessWidget {
               backgroundColor: Colors.white,
             ),
             body: Form(
-              key: settingScreenCubit.formkey,
+              key: UpdatePasswordCubit.get().formkey,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.sizeOf(context).width * 0.02,
@@ -68,12 +66,12 @@ class UpdatePasswordScreen extends StatelessWidget {
                               return null;
                             },
                             controller:
-                                settingScreenCubit.oldPasswordController,
+                                UpdatePasswordCubit.get().oldPasswordController,
                           ),
                           const SizedBoxHight(),
                           CustomeTextFormField(
                             controller:
-                                settingScreenCubit.newPasswordController,
+                                UpdatePasswordCubit.get().newPasswordController,
                             hint: 'new password',
                             textInputType: TextInputType.visiblePassword,
                             obscure: true,
@@ -86,7 +84,7 @@ class UpdatePasswordScreen extends StatelessWidget {
                           ),
                           const SizedBoxHight(),
                           CustomeTextFormField(
-                            controller: settingScreenCubit
+                            controller: UpdatePasswordCubit.get()
                                 .confirmeNewPasswordController,
                             textInputType: TextInputType.visiblePassword,
                             obscure: true,
@@ -95,7 +93,9 @@ class UpdatePasswordScreen extends StatelessWidget {
                                 return "Enter Confirem Password";
                               }
                               if (value.toString() !=
-                                  settingScreenCubit.newPasswordController.text
+                                  UpdatePasswordCubit.get()
+                                      .newPasswordController
+                                      .text
                                       .toString()) {
                                 return "Confirem password should eqaule to password";
                               }
@@ -112,9 +112,11 @@ class UpdatePasswordScreen extends StatelessWidget {
                       backGroundColor: AppColor.darkBlue,
                       width: double.infinity,
                       onTap: () {
-                        if (settingScreenCubit.formkey.currentState!
+                        if (UpdatePasswordCubit.get()
+                            .formkey
+                            .currentState!
                             .validate()) {
-                          settingScreenCubit.updatePassword();
+                          UpdatePasswordCubit.get().updatePassword();
                         }
                       },
                     ),

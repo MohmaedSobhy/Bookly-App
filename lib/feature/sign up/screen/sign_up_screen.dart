@@ -18,8 +18,8 @@ class SignUpScreeen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocProvider(
-        create: (context) => SignUpCubit(),
+      child: BlocProvider.value(
+        value: SignUpCubit.getInstanse(),
         child: Scaffold(
           body: BlocConsumer<SignUpCubit, SignUpState>(
             listener: (context, state) {
@@ -29,7 +29,7 @@ class SignUpScreeen extends StatelessWidget {
             },
             builder: (context, state) {
               return Form(
-                key: SignUpCubit.get(context).formkey,
+                key: SignUpCubit.getInstanse().formkey,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.sizeOf(context).width * 0.03,
@@ -42,7 +42,7 @@ class SignUpScreeen extends StatelessWidget {
                         height: MediaQuery.sizeOf(context).height * 0.09,
                       ),
                       CustomeTextFormField(
-                        controller: SignUpCubit.get(context).name,
+                        controller: SignUpCubit.getInstanse().name,
                         hint: AppString.name,
                         textInputType: TextInputType.name,
                         onValidate: (value) {
@@ -54,7 +54,7 @@ class SignUpScreeen extends StatelessWidget {
                       ),
                       const SizedBoxHight(),
                       CustomeTextFormField(
-                        controller: SignUpCubit.get(context).email,
+                        controller: SignUpCubit.getInstanse().email,
                         hint: AppString.email,
                         textInputType: TextInputType.emailAddress,
                         onValidate: (value) {
@@ -66,8 +66,8 @@ class SignUpScreeen extends StatelessWidget {
                       ),
                       const SizedBoxHight(),
                       CustomeTextFormField(
-                        controller: SignUpCubit.get(context).phone,
-                        hint: AppString.email,
+                        controller: SignUpCubit.getInstanse().phone,
+                        hint: AppString.phone,
                         textInputType: TextInputType.phone,
                         onValidate: (value) {
                           if (value.toString().isEmpty) {
@@ -78,7 +78,7 @@ class SignUpScreeen extends StatelessWidget {
                       ),
                       const SizedBoxHight(),
                       CustomeTextFormField(
-                        controller: SignUpCubit.get(context).password,
+                        controller: SignUpCubit.getInstanse().password,
                         hint: AppString.password,
                         textInputType: TextInputType.visiblePassword,
                         obscure: true,
@@ -91,7 +91,7 @@ class SignUpScreeen extends StatelessWidget {
                       ),
                       const SizedBoxHight(),
                       CustomeTextFormField(
-                        controller: SignUpCubit.get(context).confrimePassword,
+                        controller: SignUpCubit.getInstanse().confrimePassword,
                         hint: AppString.confirmPassword,
                         textInputType: TextInputType.visiblePassword,
                         obscure: true,
@@ -105,11 +105,11 @@ class SignUpScreeen extends StatelessWidget {
                       const SizedBoxHight(),
                       CustomButton(
                         onTap: () {
-                          if (SignUpCubit.get(context)
+                          if (SignUpCubit.getInstanse()
                               .formkey
                               .currentState!
                               .validate()) {
-                            SignUpCubit.get(context).signUpMethod();
+                            SignUpCubit.getInstanse().signUpMethod();
                           }
                         },
                         title: AppString.signUp,
