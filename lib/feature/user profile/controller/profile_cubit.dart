@@ -7,6 +7,8 @@ import 'package:books_app/core/API/end_points.dart';
 import 'package:books_app/core/data/shared_date.dart';
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:synchronized/synchronized.dart';
 import 'profile_state.dart';
@@ -40,7 +42,8 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   void loadingInfo() async {
     emit(LoadProfileInfo());
-    profileScreen = false;
+    profileScreen = true;
+    readOnly = true;
     await Future.wait(
         [getPhone(), getAddres(), loadCities(), getName(), getEmail()]);
 
@@ -99,26 +102,41 @@ class ProfileCubit extends Cubit<ProfileState> {
     });
 
     APIManager.postMethod(
-            baseUrl: EndPoints.updateProfile, body: {}, token: token)
+            baseUrl: EndPoints.updateProfile,
+            body: {
+              APIKey.name: nameController.text.toString(),
+              APIKey.phone: phoneController.text.toString(),
+              APIKey.address: addressController.text.toLowerCase(),
+            },
+            token: token)
         .then(
-      (response) {
+      (response) async {
         if (response.statusCode == 200 || response.statusCode == 201) {
-          profileScreen = false;
-          readOnly = true;
+          await _saveChange();
           emit(ProfileUpdateSuccessfully());
-        }
+        } else {}
       },
     ).catchError((error) {});
   }
 
   void updateButton() {
     if (profileScreen) {
-      _updateUserProfile();
-    } else {
-      profileScreen = true;
+      profileScreen = false;
       readOnly = false;
+      textButton = AppString.save;
       emit(ProfileInitial());
+    } else {
+      _updateUserProfile();
     }
+  }
+
+  Future<void> _saveChange() async {
+    profileScreen = false;
+    readOnly = true;
+    textButton = AppString.updateProfile;
+    StorageHelper.addKey(key: APIKey.name, value: nameController.text);
+    StorageHelper.addKey(key: APIKey.phone, value: phoneController.text);
+    StorageHelper.addKey(key: APIKey.address, value: addressController.text);
   }
 
   void imagePicker() async {

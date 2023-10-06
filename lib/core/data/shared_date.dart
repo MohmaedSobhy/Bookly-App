@@ -22,4 +22,9 @@ class StorageHelper {
   static void deleteAllData() async {
     await storage.deleteAll();
   }
+
+  static Future<bool> isKeyExist(String key) async {
+    bool exists = await storage.containsKey(key: key);
+    return exists;
+  }
 }

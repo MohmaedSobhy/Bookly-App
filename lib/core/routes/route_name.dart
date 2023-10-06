@@ -1,6 +1,6 @@
 abstract class RoutesName {
-  static const String spalsh = 'splash';
-  static const String login = '/';
+  static const String spalsh = '/';
+  static const String login = 'login';
   static const String boardingScreen = "boarding screen";
   static const String signUp = 'SignUp';
   static const String ottp = 'ottp';

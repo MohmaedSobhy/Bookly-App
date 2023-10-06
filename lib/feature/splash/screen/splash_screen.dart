@@ -1,4 +1,10 @@
+import 'dart:async';
+
+import 'package:books_app/core/API/api_keys.dart';
+import 'package:books_app/core/data/shared_date.dart';
+import 'package:books_app/core/routes/route_name.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,7 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //  Timer(const Duration(seconds: 2), () {});
+    Timer(const Duration(seconds: 1), () {
+      _naviagate();
+    });
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
@@ -33,5 +41,17 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+
+  void _naviagate() {
+    bool check = false;
+    StorageHelper.isKeyExist(APIKey.token).then((value) {
+      check = value;
+    });
+    if (check) {
+      Get.offAllNamed(RoutesName.homelayout);
+    } else {
+      Get.offAllNamed(RoutesName.login);
+    }
   }
 }

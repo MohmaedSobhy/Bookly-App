@@ -51,4 +51,6 @@ abstract class AppString {
 
   static const String subject = "Subject";
   static const String message = "Message";
+
+  static const String save = "save";
 }

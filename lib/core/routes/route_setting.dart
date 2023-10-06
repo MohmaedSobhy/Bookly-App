@@ -3,6 +3,7 @@ import 'package:books_app/feature/contact%20us/screen/contact_screen.dart';
 import 'package:books_app/feature/layout/screens/home_layout.dart';
 import 'package:books_app/feature/order%20history/screens/order_history.dart';
 import 'package:books_app/feature/order/screens/order_screen.dart';
+import 'package:books_app/feature/splash/screen/splash_screen.dart';
 import 'package:books_app/feature/update_password/screens/update_password.dart';
 import 'package:books_app/feature/user%20profile/screens/user_profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,8 @@ import 'route_name.dart';
 class AppRouting {
   static Route? genertateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RoutesName.spalsh:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case RoutesName.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case RoutesName.signUp:
