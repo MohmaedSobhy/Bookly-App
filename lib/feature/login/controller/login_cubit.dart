@@ -18,6 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
   bool loading = false;
 
   static LoginCubit? loginCubit;
+
   static final Lock _lock = Lock();
 
   static LoginCubit getInstanse() {
@@ -43,6 +44,7 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginSuccess());
       } else {
         loading = false;
+
         _failedToLogin();
       }
     }).catchError((error) {

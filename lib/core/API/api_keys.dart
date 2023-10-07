@@ -21,4 +21,5 @@ abstract class APIKey {
   static const String message = "message";
   static const String subject = "subject";
   static const String orders = "orders";
+  static const String errors = "errors";
 }

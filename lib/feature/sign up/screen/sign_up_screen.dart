@@ -1,3 +1,4 @@
+import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/routes/route_name.dart';
 import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
 import 'package:flutter/material.dart';
@@ -38,10 +39,11 @@ class SignUpScreeen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.sizeOf(context).width * 0.03,
-                      vertical: MediaQuery.sizeOf(context).height * 0.10,
                     ),
                     child: ListView(
                       children: [
+                        SizedBox(
+                            height: MediaQuery.sizeOf(context).height * 0.10),
                         const AppLogo(),
                         SizedBox(
                           height: MediaQuery.sizeOf(context).height * 0.09,
@@ -63,6 +65,11 @@ class SignUpScreeen extends StatelessWidget {
                           hint: AppString.email,
                           textInputType: TextInputType.emailAddress,
                           onValidate: (value) {
+                            if (SignUpCubit.getInstanse()
+                                .hasErrorMessage(key: APIKey.email)
+                                .isNotEmpty) {
+                              return "The email has already been taken";
+                            }
                             if (value.toString().isEmpty) {
                               return "Enter your Email";
                             }
@@ -75,6 +82,11 @@ class SignUpScreeen extends StatelessWidget {
                           hint: AppString.phone,
                           textInputType: TextInputType.phone,
                           onValidate: (value) {
+                            if (SignUpCubit.getInstanse()
+                                .hasErrorMessage(key: APIKey.phone)
+                                .isNotEmpty) {
+                              return "The phone has already been taken";
+                            }
                             if (value.toString().isEmpty) {
                               return "Enter your Phone";
                             }
@@ -111,6 +123,7 @@ class SignUpScreeen extends StatelessWidget {
                         const SizedBoxHight(),
                         CustomButton(
                           onTap: () {
+                            SignUpCubit.getInstanse().errorMessages.clear();
                             if (SignUpCubit.getInstanse()
                                 .formkey
                                 .currentState!

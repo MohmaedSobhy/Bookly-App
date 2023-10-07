@@ -37,10 +37,13 @@ class LoginScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.sizeOf(context).width * 0.03,
-                      vertical: MediaQuery.sizeOf(context).height * 0.15,
+                      
                     ),
                     child: ListView(
                       children: [
+                        SizedBox(
+                          height: MediaQuery.sizeOf(context).height * 0.15,
+                        ),
                         const AppLogo(),
                         SizedBox(
                           height: MediaQuery.sizeOf(context).height * 0.10,

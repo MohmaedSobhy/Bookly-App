@@ -24,6 +24,8 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController confrimePassword = TextEditingController();
   bool loading = false;
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  String error = "";
+  Map<String, dynamic> errorMessages = {};
 
   static SignUpCubit getInstanse() {
     if (signUpCubit == null) {
@@ -38,6 +40,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   void signUpMethod() {
     loading = true;
+    emit(LoadingToSignUp());
     APIManager.postMethod(baseUrl: EndPoints.signUp, body: {
       APIKey.name: name.text.toString(),
       APIKey.email: email.text.toString(),
@@ -49,10 +52,11 @@ class SignUpCubit extends Cubit<SignUpState> {
         _signInSuscess(response);
         emit(SignUpSucceed());
       } else {
-        _failedToSignUp();
+        _failedToSignUp(response);
       }
     }).catchError((error) {
-      _failedToSignUp();
+      print("hello error");
+      ShowToast.errorMessage();
     });
   }
 
@@ -92,11 +96,20 @@ class SignUpCubit extends Cubit<SignUpState> {
     phone.text = "";
   }
 
-  void _failedToSignUp() {
+  void _failedToSignUp(Response response) {
     loading = false;
-    ShowToast.errorMessage(
-      message: AppString.emailExist,
-    );
+
+    errorMessages.clear();
+    Map<String, dynamic> json = jsonDecode(response.body);
+    errorMessages.addAll(json[APIKey.errors]);
+    formkey.currentState!.validate();
     emit(FailedToSignUp());
+  }
+
+  String hasErrorMessage({required String key}) {
+    if (errorMessages.containsKey(key)) {
+      return errorMessages[key][0];
+    }
+    return "";
   }
 }
