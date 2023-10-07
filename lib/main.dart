@@ -3,6 +3,6 @@ import 'package:books_app/core/data/shared_date.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  StorageHelper.init();
+  //StorageHelper.init();
   runApp(const BookyApp());
 }

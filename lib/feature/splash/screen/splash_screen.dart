@@ -21,9 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 1), () {
-      _naviagate();
-    });
+    // Timer(const Duration(seconds: 1), () {
+    //   _naviagate();
+    // });
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
