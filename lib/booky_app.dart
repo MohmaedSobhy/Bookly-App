@@ -1,4 +1,5 @@
 import 'package:books_app/feature/Home/controller/home_cubit.dart';
+import 'package:books_app/feature/search/controller/search_cubit.dart';
 import 'package:books_app/feature/setting/controller/setting_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +16,7 @@ class BookyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => SettingCubit()),
         BlocProvider(create: (_) => HomeCubit()..laodData()),
+        BlocProvider(create: (_) => SearchCubit()..initlalLoadAllBooks()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

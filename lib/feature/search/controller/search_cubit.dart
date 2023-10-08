@@ -23,10 +23,10 @@ class SearchCubit extends Cubit<SearchState> {
   int nextPage = 2;
   bool endPage = false;
 
-  static SearchCubit getInstanse() {
+  static SearchCubit getInstanse(context) {
     if (searchCubit == null) {
       lock.synchronized(() {
-        searchCubit ??= SearchCubit();
+        searchCubit ??= BlocProvider.of(context);
       });
     }
     return searchCubit!;
@@ -44,6 +44,8 @@ class SearchCubit extends Cubit<SearchState> {
           books.add(Book.fromJson(item));
           selected.add(Book.fromJson(item));
         }
+        print("hello ");
+        print(selected.length);
         emit(SucceedGetResultes());
       } else {
         FailedGetResultes();

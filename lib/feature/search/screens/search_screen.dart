@@ -14,78 +14,69 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: BlocProvider.value(
-        value: SearchCubit.getInstanse()..initlalLoadAllBooks(),
-        child: Scaffold(
-          body: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: MediaQuery.sizeOf(context).width * 0.02,
-              vertical: MediaQuery.sizeOf(context).height * 0.03,
-            ),
-            child: BlocConsumer<SearchCubit, SearchState>(
-              listener: (context, state) {},
-              builder: (context, state) {
-                if (state is LoadingResultes) {
-                  return const CircleLoading();
-                }
-                return Column(
-                  children: [
-                    SearchTextField(
-                      controller:
-                          SearchCubit.getInstanse().textEditingController,
-                      onChange: (value) {
-                        SearchCubit.getInstanse().searchinBooks(value: value);
+      child: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.sizeOf(context).width * 0.02,
+            vertical: MediaQuery.sizeOf(context).height * 0.03,
+          ),
+          child: BlocConsumer<SearchCubit, SearchState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              print(state);
+              if (state is LoadingResultes) {
+                return const CircleLoading();
+              }
+              return Column(
+                children: [
+                  SearchTextField(
+                    controller:
+                        SearchCubit.getInstanse(context).textEditingController,
+                    onChange: (value) {
+                      SearchCubit.getInstanse(context)
+                          .searchinBooks(value: value);
+                    },
+                  ),
+                  Expanded(
+                    child: NotificationListener(
+                      onNotification: (notify) {
+                        if (notify is ScrollEndNotification &&
+                            SearchCubit.getInstanse(context)
+                                    .scrollController
+                                    .position
+                                    .extentAfter ==
+                                0) {
+                          SearchCubit.getInstanse(context)
+                              .loadBooksFromNextPage();
+                        }
+                        return false;
                       },
-                    ),
-                    Expanded(
-                      child: NotificationListener(
-                        onNotification: (notify) {
-                          if (notify is ScrollEndNotification &&
-                              SearchCubit.getInstanse()
-                                      .scrollController
-                                      .position
-                                      .extentAfter ==
-                                  0) {
-                            SearchCubit.getInstanse().loadBooksFromNextPage();
-                          }
-                          return false;
+                      child: ListView.builder(
+                        controller:
+                            SearchCubit.getInstanse(context).scrollController,
+                        itemCount:
+                            SearchCubit.getInstanse(context).selected.length,
+                        itemBuilder: (context, index) {
+                          return BookItem(
+                            addToCart: () {
+                              SearchCubit.getInstanse(context)
+                                  .addToCart(index: index);
+                            },
+                            onTap: () {
+                              Get.toNamed(RoutesName.bookDetails,
+                                  arguments: SearchCubit.getInstanse(context)
+                                      .selected[index]);
+                            },
+                            book: SearchCubit.getInstanse(context)
+                                .selected[index],
+                          );
                         },
-                        child: ListView.builder(
-                          controller:
-                              SearchCubit.getInstanse().scrollController,
-                          itemCount:
-                              SearchCubit.getInstanse().selected.length + 1,
-                          itemBuilder: (context, index) {
-                            if (SearchCubit.getInstanse().endPage &&
-                                index ==
-                                    SearchCubit.getInstanse().selected.length) {
-                              return const NoMoreBooks();
-                            }
-                            if (index ==
-                                SearchCubit.getInstanse().selected.length) {
-                              return const CircleLoading();
-                            }
-
-                            return BookItem(
-                              addToCart: () {
-                                SearchCubit.getInstanse()
-                                    .addToCart(index: index);
-                              },
-                              onTap: () {
-                                Get.toNamed(RoutesName.bookDetails,
-                                    arguments: SearchCubit.getInstanse()
-                                        .selected[index]);
-                              },
-                              book: SearchCubit.getInstanse().selected[index],
-                            );
-                          },
-                        ),
                       ),
                     ),
-                  ],
-                );
-              },
-            ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),

@@ -98,7 +98,6 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   void _failedToSignUp(Response response) {
     loading = false;
-
     errorMessages.clear();
     Map<String, dynamic> json = jsonDecode(response.body);
     errorMessages.addAll(json[APIKey.errors]);
