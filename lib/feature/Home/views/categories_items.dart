@@ -1,7 +1,9 @@
+import 'package:books_app/core/routes/route_name.dart';
 import 'package:books_app/feature/Home/controller/home_cubit.dart';
 import 'package:books_app/feature/Home/controller/home_state.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../widgets/category_item.dart';
 
@@ -20,7 +22,12 @@ class CategoriesView extends StatelessWidget {
             itemCount: HomeCubit.get(context).categories.length,
             itemBuilder: (_, index) {
               return CategoryItem(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(
+                    RoutesName.category,
+                    arguments: HomeCubit.get(context).categories[index],
+                  );
+                },
                 title: HomeCubit.get(context).categories[index].name,
               );
             },

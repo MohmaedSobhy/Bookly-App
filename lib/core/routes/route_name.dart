@@ -12,4 +12,5 @@ abstract class RoutesName {
   static const String sendOrder = "sendOrder";
   static const String contactUs = "Contact Us";
   static const String orderHistory = "orderHistory";
+  static const String category = "CategoryScreen";
 }

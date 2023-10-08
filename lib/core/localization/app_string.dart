@@ -53,4 +53,5 @@ abstract class AppString {
   static const String message = "Message";
 
   static const String save = "save";
+  static const String noAvailableBooks = "No Available Books for this Category";
 }
