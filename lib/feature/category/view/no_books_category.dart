@@ -1,6 +1,5 @@
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
-
 import '../../../core/localization/app_string.dart';
 
 class NoBooksToCategory extends StatelessWidget {
