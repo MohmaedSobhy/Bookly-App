@@ -3,6 +3,7 @@ import 'package:books_app/core/API/api.dart';
 import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/API/end_points.dart';
 import 'package:books_app/core/model/book.dart';
+import 'package:books_app/core/model/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchronized/synchronized.dart';
@@ -16,14 +17,16 @@ class SearchCubit extends Cubit<SearchState> {
   List<Book> selected = [];
   final ScrollController scrollController = ScrollController();
   final TextEditingController textEditingController = TextEditingController();
-  double min = 0, max = 0;
-  List<String> categoryies = [];
+  double min = 0, max = 1000;
+
+  List<Category> categoryies = [];
   SearchCubit() : super(SearchInitial());
 
   static SearchCubit? searchCubit;
   static final Lock lock = Lock();
   int nextPage = 2;
   bool endPage = false;
+  int selectButton = -1;
 
   static SearchCubit getInstanse(context) {
     if (searchCubit == null) {
@@ -104,4 +107,21 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   void filteration() {}
+
+  Future<void> loadCatgory() async {
+    await APIManager.getMethod(baseUrl: EndPoints.allCategories)
+        .then((response) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Map<String, dynamic> data = jsonDecode(response.body);
+        for (var item in data[APIKey.data][APIKey.categories]) {
+          categoryies.add(Category.fromJson(item));
+        }
+      }
+    });
+  }
+
+  void changeButtonColor(int index) {
+    selectButton = index;
+    emit(ChangeButtonColor());
+  }
 }

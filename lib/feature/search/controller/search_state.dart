@@ -9,3 +9,5 @@ class LoadingResultes extends SearchState {}
 class SucceedGetResultes extends SearchState {}
 
 class FailedGetResultes extends SearchState {}
+
+class ChangeButtonColor extends SearchState {}

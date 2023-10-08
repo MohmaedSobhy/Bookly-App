@@ -26,7 +26,9 @@ class SearchScreen extends StatelessWidget {
             listener: (context, state) {},
             builder: (context, state) {
               if (state is SearchInitial) {
-                SearchCubit.getInstanse(context).initlalLoadAllBooks();
+                SearchCubit.getInstanse(context)
+                  ..initlalLoadAllBooks()
+                  ..loadCatgory();
               }
               if (state is LoadingResultes) {
                 return const CircleLoading();

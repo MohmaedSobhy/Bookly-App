@@ -54,4 +54,7 @@ abstract class AppString {
 
   static const String save = "save";
   static const String noAvailableBooks = "No Available Books for this Category";
+
+  static const String filter = "Filter";
+  static const String pirceRange = "Price Range";
 }
