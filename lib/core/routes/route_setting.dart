@@ -1,4 +1,5 @@
 import 'package:books_app/feature/Book%20Details/screen/book_details.dart';
+import 'package:books_app/feature/category/screens/category_screen.dart';
 import 'package:books_app/feature/contact%20us/screen/contact_screen.dart';
 import 'package:books_app/feature/layout/screens/home_layout.dart';
 import 'package:books_app/feature/order%20history/screens/order_history.dart';
@@ -12,6 +13,7 @@ import '../../feature/on_boarding/screen/onbording.dart';
 import '../../feature/ottp/screen/ottp_screen.dart';
 import '../../feature/sign%20up/screen/sign_up_screen.dart';
 import '../model/book.dart';
+import '../model/category_model.dart';
 import 'route_name.dart';
 
 class AppRouting {
@@ -44,6 +46,10 @@ class AppRouting {
         return MaterialPageRoute(builder: (_) => const ContactUsScreen());
       case RoutesName.orderHistory:
         return MaterialPageRoute(builder: (_) => const OrderHistoryScreen());
+      case RoutesName.category:
+        Category category = settings.arguments as Category;
+        return MaterialPageRoute(
+            builder: (_) => CategoryScreen(category: category));
     }
 
     return null;

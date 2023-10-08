@@ -34,4 +34,6 @@ abstract class EndPoints {
   static const String updateProfile = "${baseUrl}update-profile";
 
   static const String filteration = "${baseUrl}products-filter?";
+
+  static const String categories = "${baseUrl}categories/";
 }

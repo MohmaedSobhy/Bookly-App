@@ -19,11 +19,11 @@ class LoginCubit extends Cubit<LoginState> {
 
   static LoginCubit? loginCubit;
 
-  static final Lock _lock = Lock();
+  static final Lock lock = Lock();
 
   static LoginCubit getInstanse() {
     if (loginCubit == null) {
-      _lock.synchronized(() {
+      lock.synchronized(() {
         loginCubit ??= LoginCubit();
       });
     }

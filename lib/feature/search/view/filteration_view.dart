@@ -6,8 +6,8 @@ class FilterationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: const Column(
+      padding: EdgeInsets.all(8.0),
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [],
       ),

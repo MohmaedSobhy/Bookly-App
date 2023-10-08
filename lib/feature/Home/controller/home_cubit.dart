@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:books_app/core/API/api.dart';
 import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/API/end_points.dart';
-import 'package:books_app/feature/Home/model/category_model.dart';
+import 'package:books_app/core/model/category_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:synchronized/synchronized.dart';
 import '../../../core/model/book.dart';
