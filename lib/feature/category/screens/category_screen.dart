@@ -1,3 +1,4 @@
+import 'package:books_app/core/routes/route_name.dart';
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:books_app/core/widgets/book_item.dart';
 import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
@@ -56,9 +57,14 @@ class CategoryScreen extends StatelessWidget {
                       horizontal: MediaQuery.sizeOf(context).width * 0.01,
                       vertical: MediaQuery.sizeOf(context).height * 0.01),
                   child: BookItem(
-                    addToCart: () {},
+                    addToCart: () {
+                      CategoryCubit.getInstanse().addToCart(index: index);
+                    },
                     book: CategoryCubit.getInstanse().books[index],
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(RoutesName.bookDetails,
+                          arguments: CategoryCubit.getInstanse().books[index]);
+                    },
                   ),
                 );
               },
