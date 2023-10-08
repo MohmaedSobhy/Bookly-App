@@ -22,4 +22,8 @@ abstract class APIKey {
   static const String subject = "subject";
   static const String orders = "orders";
   static const String errors = "errors";
+  static const String min = 'min';
+  static const String max = 'max';
+  static const String search = "search";
+  static const String categoryId = "category_id";
 }

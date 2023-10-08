@@ -32,4 +32,6 @@ abstract class EndPoints {
   static const String orderHistory = "${baseUrl}order-history";
 
   static const String updateProfile = "${baseUrl}update-profile";
+
+  static const String filteration = "${baseUrl}products-filter?";
 }
