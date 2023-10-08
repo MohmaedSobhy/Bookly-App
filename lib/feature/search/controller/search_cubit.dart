@@ -44,8 +44,7 @@ class SearchCubit extends Cubit<SearchState> {
           books.add(Book.fromJson(item));
           selected.add(Book.fromJson(item));
         }
-        print("hello ");
-        print(selected.length);
+
         emit(SucceedGetResultes());
       } else {
         FailedGetResultes();
@@ -101,4 +100,6 @@ class SearchCubit extends Cubit<SearchState> {
       ShowToast.errorMessage();
     });
   }
+
+  void filteration() {}
 }

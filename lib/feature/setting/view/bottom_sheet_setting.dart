@@ -17,7 +17,7 @@ class ButtonSheetSetting extends StatelessWidget {
         if (state is LogoutState) {}
       },
       builder: (context, state) {
-        return Container(
+        return Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
             mainAxisSize: MainAxisSize.min,

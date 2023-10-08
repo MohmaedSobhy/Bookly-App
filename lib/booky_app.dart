@@ -16,7 +16,7 @@ class BookyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => SettingCubit()),
         BlocProvider(create: (_) => HomeCubit()..laodData()),
-        BlocProvider(create: (_) => SearchCubit()..initlalLoadAllBooks()),
+        BlocProvider(create: (_) => SearchCubit()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
