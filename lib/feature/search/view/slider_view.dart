@@ -2,7 +2,6 @@ import 'package:books_app/core/widgets/sized_box_high.dart';
 import 'package:books_app/feature/search/controller/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../core/localization/app_string.dart';
 import '../../../core/theme/app_color.dart';
 

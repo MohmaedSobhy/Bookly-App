@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CategoryCard extends StatelessWidget {
+class CategoryFilterationCard extends StatelessWidget {
   final String text;
   final Color? backGround;
   final VoidCallback onTap;
-  const CategoryCard(
+  const CategoryFilterationCard(
       {super.key, this.backGround, required this.text, required this.onTap});
 
   @override
@@ -12,7 +12,7 @@ class CategoryCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color:
               (backGround == null) ? Colors.grey.withOpacity(0.1) : backGround,

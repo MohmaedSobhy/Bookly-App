@@ -18,7 +18,7 @@ class SearchCubit extends Cubit<SearchState> {
   final ScrollController scrollController = ScrollController();
   final TextEditingController textEditingController = TextEditingController();
   int min = 0, max = 1000;
-  RangeValues values = RangeValues(0, 1000);
+  RangeValues values = const RangeValues(0, 1000);
 
   List<Category> categoryies = [];
   SearchCubit() : super(SearchInitial());
@@ -108,15 +108,18 @@ class SearchCubit extends Cubit<SearchState> {
   }
 
   void applyFilteration() {
+    String url = getUrl();
     print("hello");
-    String url = EndPoints.filteration;
+    emit(LoadingResultes());
+    print(url);
     APIManager.getMethod(baseUrl: url).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         selected.clear();
         Map<String, dynamic> data = jsonDecode(response.body);
-        for (var item in data[APIKey.data]) {
+        for (var item in data[APIKey.data]['products']) {
           selected.add(Book.fromJson(item));
         }
+        print(selected.length);
         emit(SucceedGetResultes());
       }
     }).catchError((error) {});
@@ -134,6 +137,16 @@ class SearchCubit extends Cubit<SearchState> {
     });
   }
 
+  String getUrl() {
+    String url = EndPoints.filteration;
+    if (selectButton != -1) {
+      url = "$url${APIKey.categoryId}=${categoryies[selectButton].id}";
+    }
+    url = "$url&${APIKey.min}=$min";
+    url = "$url&${APIKey.max}=$max";
+    return url;
+  }
+
   void changeButtonColor(int index) {
     selectButton = index;
     emit(ChangeButtonColor());
@@ -143,6 +156,7 @@ class SearchCubit extends Cubit<SearchState> {
     selectButton = -1;
     min = 0;
     max = 1000;
+    values = const RangeValues(0, 1000);
   }
 
   void rangeSlider(RangeValues value) {

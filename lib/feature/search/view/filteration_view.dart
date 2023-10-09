@@ -2,14 +2,15 @@ import 'package:books_app/core/localization/app_string.dart';
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/core/widgets/sized_box_high.dart';
-import 'package:books_app/feature/Home/views/categories_items.dart';
 import 'package:books_app/feature/search/controller/search_cubit.dart';
+import 'package:books_app/feature/search/view/categories_filteration_view.dart';
 import 'package:books_app/feature/search/view/slider_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FilterationView extends StatelessWidget {
-  const FilterationView({super.key});
+  final VoidCallback onTap;
+  const FilterationView({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +52,12 @@ class FilterationView extends StatelessWidget {
                 ],
               ),
               const SizedBoxHight(),
-              const CategoriesView(),
+              const CategoriesFilterationView(),
               const SizedBoxHight(),
               const RangeSliderView(),
               const SizedBoxHight(),
               CustomButton(
-                onTap: () {},
+                onTap: onTap,
                 title: AppString.applyFilteration,
                 width: double.infinity,
                 backGroundColor: AppColor.darkBlue,

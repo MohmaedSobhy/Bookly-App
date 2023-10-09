@@ -2,8 +2,11 @@ import 'package:books_app/feature/search/controller/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CategoriesView extends StatelessWidget {
-  const CategoriesView({super.key});
+import '../../../core/theme/app_color.dart';
+import '../widgets/category_card.dart';
+
+class CategoriesFilterationView extends StatelessWidget {
+  const CategoriesFilterationView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class CategoriesView extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemCount: SearchCubit.getInstanse(context).categoryies.length,
             itemBuilder: (context, index) {
-              return CategoryCard(
+              return CategoryFilterationCard(
                 onTap: () {
                   SearchCubit.getInstanse(context).changeButtonColor(index);
                 },

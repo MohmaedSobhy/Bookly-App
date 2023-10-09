@@ -52,7 +52,13 @@ class SearchScreen extends StatelessWidget {
                           showBottomSheet(
                             context: context,
                             builder: (context) {
-                              return const FilterationView();
+                              return FilterationView(
+                                onTap: () {
+                                  Get.back();
+                                  SearchCubit.getInstanse(context)
+                                      .applyFilteration();
+                                },
+                              );
                             },
                           );
                         },
