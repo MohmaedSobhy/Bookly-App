@@ -54,4 +54,10 @@ class BookDetailsCubit extends Cubit<BookDetailsState> {
   void _failedMessage() {
     ShowToast.errorMessage();
   }
+
+  @override
+  void onChange(Change<BookDetailsState> change) {
+    // define current state and next state
+    super.onChange(change);
+  }
 }

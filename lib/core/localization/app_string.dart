@@ -57,4 +57,6 @@ abstract class AppString {
 
   static const String filter = "Filter";
   static const String pirceRange = "Price Range";
+
+  static const String applyFilteration = "Apply Filteration";
 }

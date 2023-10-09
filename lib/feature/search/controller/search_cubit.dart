@@ -17,7 +17,8 @@ class SearchCubit extends Cubit<SearchState> {
   List<Book> selected = [];
   final ScrollController scrollController = ScrollController();
   final TextEditingController textEditingController = TextEditingController();
-  double min = 0, max = 1000;
+  int min = 0, max = 1000;
+  RangeValues values = RangeValues(0, 1000);
 
   List<Category> categoryies = [];
   SearchCubit() : super(SearchInitial());
@@ -106,7 +107,20 @@ class SearchCubit extends Cubit<SearchState> {
     });
   }
 
-  void filteration() {}
+  void applyFilteration() {
+    print("hello");
+    String url = EndPoints.filteration;
+    APIManager.getMethod(baseUrl: url).then((response) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        selected.clear();
+        Map<String, dynamic> data = jsonDecode(response.body);
+        for (var item in data[APIKey.data]) {
+          selected.add(Book.fromJson(item));
+        }
+        emit(SucceedGetResultes());
+      }
+    }).catchError((error) {});
+  }
 
   Future<void> loadCatgory() async {
     await APIManager.getMethod(baseUrl: EndPoints.allCategories)
@@ -123,5 +137,18 @@ class SearchCubit extends Cubit<SearchState> {
   void changeButtonColor(int index) {
     selectButton = index;
     emit(ChangeButtonColor());
+  }
+
+  void bottomSheetPop() {
+    selectButton = -1;
+    min = 0;
+    max = 1000;
+  }
+
+  void rangeSlider(RangeValues value) {
+    min = value.start.toInt();
+    max = value.end.toInt();
+    values = value;
+    emit(RangeSliderState());
   }
 }

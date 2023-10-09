@@ -1,8 +1,10 @@
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:books_app/core/theme/app_color.dart';
+import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/core/widgets/sized_box_high.dart';
+import 'package:books_app/feature/Home/views/categories_items.dart';
 import 'package:books_app/feature/search/controller/search_cubit.dart';
-import 'package:books_app/feature/search/widgets/category_card.dart';
+import 'package:books_app/feature/search/view/slider_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,6 +39,7 @@ class FilterationView extends StatelessWidget {
                     backgroundColor: AppColor.darkBlue.withOpacity(0.4),
                     child: IconButton(
                       onPressed: () {
+                        SearchCubit.getInstanse(context).bottomSheetPop();
                         Navigator.pop(context);
                       },
                       icon: const Icon(
@@ -48,55 +51,15 @@ class FilterationView extends StatelessWidget {
                 ],
               ),
               const SizedBoxHight(),
-              SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.05,
-                child: ListView.separated(
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(
-                      width: 10,
-                    );
-                  },
-                  scrollDirection: Axis.horizontal,
-                  itemCount:
-                      SearchCubit.getInstanse(context).categoryies.length,
-                  itemBuilder: (context, index) {
-                    return CategoryCard(
-                      onTap: () {
-                        SearchCubit.getInstanse(context)
-                            .changeButtonColor(index);
-                      },
-                      backGround:
-                          SearchCubit.getInstanse(context).selectButton == index
-                              ? AppColor.darkBlue
-                              : null,
-                      text: SearchCubit.getInstanse(context)
-                          .categoryies[index]
-                          .name,
-                    );
-                  },
-                ),
-              ),
+              const CategoriesView(),
               const SizedBoxHight(),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppString.pirceRange,
-                    style: TextStyle(
-                      color: AppColor.darkBlue,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "200 EGP - 500 EGP",
-                    style: TextStyle(
-                      color: AppColor.darkBlue,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+              const RangeSliderView(),
+              const SizedBoxHight(),
+              CustomButton(
+                onTap: () {},
+                title: AppString.applyFilteration,
+                width: double.infinity,
+                backGroundColor: AppColor.darkBlue,
               )
             ],
           );

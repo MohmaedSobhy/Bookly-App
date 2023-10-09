@@ -11,3 +11,5 @@ class SucceedGetResultes extends SearchState {}
 class FailedGetResultes extends SearchState {}
 
 class ChangeButtonColor extends SearchState {}
+
+class RangeSliderState extends SearchState {}
