@@ -1,7 +1,6 @@
 import 'package:books_app/feature/search/controller/search_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../core/theme/app_color.dart';
 import '../widgets/category_card.dart';
 

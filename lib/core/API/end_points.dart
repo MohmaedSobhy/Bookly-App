@@ -36,4 +36,6 @@ abstract class EndPoints {
   static const String filteration = "${baseUrl}products-filter?";
 
   static const String categories = "${baseUrl}categories/";
+
+  static const String forgetPassword = "${baseUrl}forget-password";
 }

@@ -59,4 +59,9 @@ abstract class AppString {
   static const String pirceRange = "Price Range";
 
   static const String applyFilteration = "Apply Filteration";
+
+  static const String resetPassword = "Reset Password";
+  static const String requestPasswordReset = "Request Password Reset";
+  static const String resetPasswordInstruction =
+      "Enter the email address you used when you joined and we'll send you instruction to reset your password";
 }
