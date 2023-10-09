@@ -57,6 +57,16 @@ class ForgetPassWordScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBoxHight(),
+                              Container(
+                                height: MediaQuery.sizeOf(context).height * 0.4,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "images/forget_password.png"),
+                                  ),
+                                ),
+                              ),
+                              const SizedBoxHight(),
                               const Text(
                                 AppString.resetPassword,
                                 style: TextStyle(
@@ -74,11 +84,20 @@ class ForgetPassWordScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBoxHight(),
+                              const SizedBoxHight(),
                               CustomeTextFormField(
-                                controller: TextEditingController(),
+                                controller: ForgetPasswordCubit.getInstanse()
+                                    .emailController,
                                 hint: AppString.email,
                                 textInputType: TextInputType.emailAddress,
+                                onValidate: (value) {
+                                  if (value.toString().isEmpty) {
+                                    return "Enter your Email";
+                                  }
+                                  return null;
+                                },
                               ),
+                              const SizedBoxHight(),
                             ],
                           ),
                         ),

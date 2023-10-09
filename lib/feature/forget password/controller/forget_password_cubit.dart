@@ -26,7 +26,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
 
   ForgetPasswordCubit() : super(ForgetPasswordInitial());
 
-  void forgetPassword() {
+  void resetingPassword() {
     loading = true;
     emit(LoadingForgetPassword());
     APIManager.postMethod(baseUrl: EndPoints.forgetPassword, body: {

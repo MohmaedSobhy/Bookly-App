@@ -37,7 +37,6 @@ class LoginScreen extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: MediaQuery.sizeOf(context).width * 0.03,
-                      
                     ),
                     child: ListView(
                       children: [
@@ -71,6 +70,20 @@ class LoginScreen extends StatelessWidget {
                             return null;
                           },
                           obscure: true,
+                        ),
+                        const SizedBoxHight(),
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(RoutesName.resetPassword);
+                          },
+                          child: const Text(
+                            "${AppString.forgetPassword}  ?",
+                            style: TextStyle(
+                              color: AppColor.darkBlue,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                         const SizedBoxHight(),
                         CustomButton(

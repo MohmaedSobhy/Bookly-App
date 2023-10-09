@@ -46,7 +46,7 @@ class AppRouting {
       case RoutesName.contactUs:
         return MaterialPageRoute(builder: (_) => const ContactUsScreen());
       case RoutesName.resetPassword:
-        return MaterialPageRoute(builder: (_) => ForgetPassWordScreen());
+        return MaterialPageRoute(builder: (_) => const ForgetPassWordScreen());
       case RoutesName.orderHistory:
         return MaterialPageRoute(builder: (_) => const OrderHistoryScreen());
       case RoutesName.category:
