@@ -2,22 +2,22 @@
 This is a GitHub project for a Books application that allows users to browse, search, and purchase books. Users can log in if they have an account or sign up if they are new to the app. The application provides various features and screens to enhance the user experience.
 
 ## Features :
-🔐 - Authentication
-🏠 - Home Screen
-🔍 - Search
-🧮 - Filter
-🛒 - Add to Cart
-❤️ - Favorites
-🛍️ - Cart Screen
-➕➖ - Quantity Increment/Decrement
-🛒✅ - Checkout
-📍 - Location
-⚙️ - Settings
-📞 - Contact Us
-🔑 - Password Update
-🚪 - Logout
-📚 - Order History
-👤 - User Profile
+🔐 - Authentication <br>
+🏠 - Home Screen <br>
+🔍 - Search <br>
+🧮 - Filter <br> 
+🛒 - Add to Cart <br>
+❤️ - Favorites <br>
+🛍️ - Cart Screen <br>
+➕➖ - Quantity Increment/Decrement <br>
+🛒✅ - Checkout <br>
+📍 - Location <br>
+⚙️ - Settings <br>
+📞 - Contact Us <br>
+🔑 - Password Update <br>
+🚪 - Logout <br>
+📚 - Order History <br>
+👤 - User Profile <br>
 
 ## User Authentication
 🔐 Users can log in with their existing accounts or sign up if they don't have an account yet.
