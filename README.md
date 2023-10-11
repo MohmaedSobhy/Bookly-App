@@ -26,33 +26,33 @@ This is a GitHub project for a Books application that allows users to browse, se
 🏠 The home screen displays the best-selling books and newly arrived books to capture the user's attention.
 
 ## Book Search and Filter
-🔍 Users can search for books based on title, author, genre, or any other relevant criteria.
-🧮 The application provides filtering options to help users refine their search results.
+🔍 Users can search for books based on title or category or price. <br>
+🧮 The application provides filtering options to help users refine their search results. <br>
 
 ## Add to Cart and Favorites
-🛒 Users can add books to their cart for future purchase.
+🛒 Users can add books to their cart for future purchase. <br>
 ❤️ The application also allows users to mark books as favorites for easy access.
 
 ## Cart Screen
-🛍️ The cart screen shows the list of books added by the user.
+🛍️ The cart screen shows the list of books added by the user. <br>
 ➕➖ Users can increment or decrement the quantity of each book in the cart.
 
 ## Checkout
-🛒✅ Users can proceed to checkout by providing their city and address details.
+🛒✅ Users can proceed to checkout by providing their city and address details. <br>
 📍 The application handles the order placement process securely.
 
 ## User Settings
-⚙️ The user settings screen allows users to customize their preferences and update their account details.
+⚙️ The user settings screen allows users to customize their preferences and update their account details.<br>
 
 ## Contact Us
-📞 Users can contact the application support team directly from within the app.
+📞 Users can contact the application support team directly from within the app. <br>
 
 ## Password Update and Logout
-🔑 Users have the option to update their password if needed.
+🔑 Users have the option to update their password if needed.<br>
 🚪 They can also log out from the application to ensure account security.
 
 ## Order History
-📚 Users can view their order history to keep track of their previous purchases.
+📚 Users can view their order history to keep track of their previous purchases.<br>
 
 ## User Profile
 👤 Users can access their profile and update personal details such as name, profile picture, and other relevant information.
