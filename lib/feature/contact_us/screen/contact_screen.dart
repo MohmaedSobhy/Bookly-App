@@ -1,8 +1,8 @@
 import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/core/widgets/sized_box_high.dart';
 import 'package:books_app/core/widgets/text_field.dart';
-import 'package:books_app/feature/contact%20us/controller/contact_us_cubit.dart';
-import 'package:books_app/feature/contact%20us/controller/contact_us_state.dart';
+import 'package:books_app/feature/contact_us/controller/contact_us_cubit.dart';
+import 'package:books_app/feature/contact_us/controller/contact_us_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';

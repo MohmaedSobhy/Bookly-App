@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:books_app/core/API/api.dart';
 import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/API/end_points.dart';
-import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:flutter/material.dart';
 import 'package:synchronized/synchronized.dart';
 
@@ -44,7 +43,6 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   }
 
   void _failedToSendCode() {
-    ShowToast.errorMessage(message: "Check Email");
     loading = false;
     emit(FailedToSendCode());
   }

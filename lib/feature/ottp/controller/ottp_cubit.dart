@@ -9,10 +9,10 @@ class OttpCubit extends Cubit<OttpState> {
   static final Lock _lock = Lock();
   TextEditingController pinController = TextEditingController();
 
-  static OttpCubit get(context) {
+  static OttpCubit getInstanse() {
     if (_ottpCubit == null) {
       _lock.synchronized(() {
-        _ottpCubit ??= BlocProvider.of(context);
+        _ottpCubit ??= OttpCubit();
       });
     }
     return _ottpCubit!;
@@ -20,7 +20,7 @@ class OttpCubit extends Cubit<OttpState> {
 
   OttpCubit() : super(OttpInitial());
 
-  void sendOttp() {}
+  void checkOttp() {}
 
   void resendCode() {}
 }

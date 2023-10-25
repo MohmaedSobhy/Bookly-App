@@ -1,7 +1,7 @@
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:books_app/core/widgets/custom_button.dart';
-import 'package:books_app/feature/Book%20Details/controller/book_details_cubit.dart';
-import 'package:books_app/feature/Book%20Details/controller/book_details_state.dart';
+import 'package:books_app/feature/book_details/controller/book_details_cubit.dart';
+import 'package:books_app/feature/book_details/controller/book_details_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

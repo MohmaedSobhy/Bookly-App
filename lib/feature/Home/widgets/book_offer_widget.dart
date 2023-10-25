@@ -1,5 +1,5 @@
 import 'package:books_app/core/theme/app_color.dart';
-import 'package:books_app/feature/Home/widgets/discount_container.dart';
+import 'package:books_app/feature/home/widgets/discount_container.dart';
 import 'package:flutter/material.dart';
 import '../../../core/model/book.dart';
 

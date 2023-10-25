@@ -1,6 +1,6 @@
-import 'package:books_app/feature/Book%20Details/screen/book_details.dart';
+import 'package:books_app/feature/book_details/screen/book_details.dart';
 import 'package:books_app/feature/category/screens/category_screen.dart';
-import 'package:books_app/feature/contact%20us/screen/contact_screen.dart';
+import 'package:books_app/feature/contact_us/screen/contact_screen.dart';
 import 'package:books_app/feature/forget%20password/screens/forget_password_screen.dart';
 import 'package:books_app/feature/layout/screens/home_layout.dart';
 import 'package:books_app/feature/order%20history/screens/order_history.dart';

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../../core/helper/show_toast_message.dart';
 import '../../../core/localization/app_string.dart';
 
 class ForgetPassWordScreen extends StatelessWidget {
@@ -28,6 +29,14 @@ class ForgetPassWordScreen extends StatelessWidget {
               listener: (context, state) {
                 if (state is SucessSendingCode) {
                   Get.offAllNamed(RoutesName.ottp);
+                }
+
+                if (state is FailedToSendCode) {
+                  ShowToast.errorMessage(message: "Check Email");
+                }
+
+                if (state is SucessSendingCode) {
+                  Get.offNamed(RoutesName.ottp);
                 }
               },
               builder: (context, state) {

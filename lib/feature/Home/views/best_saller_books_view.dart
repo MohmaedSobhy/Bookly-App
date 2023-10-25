@@ -1,7 +1,7 @@
 import 'package:books_app/core/routes/route_name.dart';
 import 'package:books_app/feature/Home/controller/home_cubit.dart';
 import 'package:books_app/feature/Home/controller/home_state.dart';
-import 'package:books_app/feature/Home/widgets/book_offer_widget.dart';
+import 'package:books_app/feature/home/widgets/book_offer_widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
