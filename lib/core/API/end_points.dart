@@ -40,4 +40,6 @@ abstract class EndPoints {
   static const String forgetPassword = "${baseUrl}forget-password";
 
   static const String verifyOttpCode = "${baseUrl}check-forget-password";
+
+  static const String resetPassword = "${baseUrl}reset-password";
 }
