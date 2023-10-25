@@ -26,4 +26,5 @@ abstract class APIKey {
   static const String max = 'max';
   static const String search = "search";
   static const String categoryId = "category_id";
+  static const String verfiyCode = "verify_code";
 }

@@ -29,7 +29,7 @@ class AppRouting {
       case RoutesName.boardingScreen:
         return MaterialPageRoute(builder: (_) => const OnbordingScreen());
       case RoutesName.ottp:
-        return MaterialPageRoute(builder: (_) => const OttpScreen());
+        return MaterialPageRoute(builder: (_) => OttpScreen());
       case RoutesName.bookDetails:
         Book book = settings.arguments as Book;
         return MaterialPageRoute(

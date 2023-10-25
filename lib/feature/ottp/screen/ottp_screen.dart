@@ -1,5 +1,8 @@
+import 'package:books_app/core/helper/show_toast_message.dart';
+import 'package:books_app/core/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 
 import '../../../core/localization/app_string.dart';
 import '../../../core/theme/app_color.dart';
@@ -10,8 +13,10 @@ import '../controller/ottp_state.dart';
 import '../views/pin_text_field.dart';
 import '../views/verfication_image_view.dart';
 
+// ignore: must_be_immutable
 class OttpScreen extends StatelessWidget {
-  const OttpScreen({super.key});
+  TextEditingController pinController = TextEditingController();
+  OttpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,15 @@ class OttpScreen extends StatelessWidget {
               horizontal: MediaQuery.sizeOf(context).width * 0.03,
             ),
             child: BlocConsumer<OttpCubit, OttpState>(
-              listener: (context, state) {},
+              listener: (context, state) {
+                if (state is OttpCodeInvalide) {
+                  ShowToast.errorMessage(message: "Check Code");
+                }
+                if (state is OttpCodeValide) {
+                  ShowToast.sucuessMessage(message: "Code Valid");
+                  Get.offAllNamed(RoutesName.resetPassword);
+                }
+              },
               builder: (context, state) {
                 return ListView(
                   children: [
@@ -44,24 +57,19 @@ class OttpScreen extends StatelessWidget {
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.05,
                     ),
-                    PinTextField(
-                      controller: OttpCubit.getInstanse().pinController,
-                    ),
+                    PinTextField(controller: pinController),
                     SizedBox(
                       height: MediaQuery.sizeOf(context).height * 0.05,
                     ),
                     CustomButton(
-                      onTap: () {},
+                      onTap: () {
+                        OttpCubit.getInstanse().checkOttpCode(
+                          code: pinController.text.toString(),
+                        );
+                      },
                       title: AppString.verfiyEmail,
                     ),
                     const SizedBoxHight(),
-                    CustomButton(
-                      onTap: () {
-                        OttpCubit.getInstanse().checkOttp();
-                      },
-                      title: AppString.resendCode,
-                      backGroundColor: AppColor.darkBlue,
-                    ),
                   ],
                 );
               },

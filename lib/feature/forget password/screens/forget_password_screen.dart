@@ -28,7 +28,7 @@ class ForgetPassWordScreen extends StatelessWidget {
             child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
               listener: (context, state) {
                 if (state is SucessSendingCode) {
-                  Get.offAllNamed(RoutesName.ottp);
+                  Get.offNamed(RoutesName.ottp);
                 }
 
                 if (state is FailedToSendCode) {
@@ -36,7 +36,7 @@ class ForgetPassWordScreen extends StatelessWidget {
                 }
 
                 if (state is SucessSendingCode) {
-                  Get.offNamed(RoutesName.ottp);
+                  Get.toNamed(RoutesName.ottp);
                 }
               },
               builder: (context, state) {
@@ -117,7 +117,7 @@ class ForgetPassWordScreen extends StatelessWidget {
                                 .currentState!
                                 .validate()) {
                               ForgetPasswordCubit.getInstanse()
-                                  .resetingPassword();
+                                  .sendOttpCodeToUserEmail();
                             }
                           },
                           title: AppString.requestPasswordReset,

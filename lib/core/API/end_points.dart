@@ -38,4 +38,6 @@ abstract class EndPoints {
   static const String categories = "${baseUrl}categories/";
 
   static const String forgetPassword = "${baseUrl}forget-password";
+
+  static const String verifyOttpCode = "${baseUrl}check-forget-password";
 }

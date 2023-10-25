@@ -25,7 +25,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
 
   ForgetPasswordCubit() : super(ForgetPasswordInitial());
 
-  void resetingPassword() {
+  void sendOttpCodeToUserEmail() {
     loading = true;
     emit(LoadingForgetPassword());
     APIManager.postMethod(baseUrl: EndPoints.forgetPassword, body: {
@@ -33,6 +33,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     }).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         loading = false;
+        print(response.body);
         emit(SucessSendingCode());
       } else {
         _failedToSendCode();
