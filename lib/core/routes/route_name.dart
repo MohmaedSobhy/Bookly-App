@@ -14,4 +14,5 @@ abstract class RoutesName {
   static const String orderHistory = "orderHistory";
   static const String category = "CategoryScreen";
   static const String resetPassword = "Reset Password";
+  static const String forgetPassword = "Forget Password";
 }

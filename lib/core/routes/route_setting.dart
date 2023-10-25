@@ -153,7 +153,7 @@ class AppRouting {
             );
           },
         );
-      case RoutesName.resetPassword:
+      case RoutesName.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPassWordScreen());
       case RoutesName.orderHistory:
         PageRouteBuilder(

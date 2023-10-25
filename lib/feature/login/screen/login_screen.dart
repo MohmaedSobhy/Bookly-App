@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                         const SizedBoxHight(),
                         InkWell(
                           onTap: () {
-                            Get.toNamed(RoutesName.resetPassword);
+                            Get.toNamed(RoutesName.forgetPassword);
                           },
                           child: const Text(
                             "${AppString.forgetPassword}  ?",
