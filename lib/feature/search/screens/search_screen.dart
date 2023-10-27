@@ -1,6 +1,5 @@
 import 'package:books_app/core/routes/route_name.dart';
 import 'package:books_app/core/shimmer/shimmer_book_item.dart';
-import 'package:books_app/core/shimmer/shimmer_books_items.dart';
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:books_app/core/widgets/book_item.dart';
 import 'package:books_app/feature/search/controller/search_cubit.dart';
@@ -32,7 +31,7 @@ class SearchScreen extends StatelessWidget {
                   ..loadCatgory();
               }
               if (state is LoadingResultes) {
-                return const ShimmerBooksItmes();
+                return const ShimmerBookItem();
               }
               return Column(
                 children: [

@@ -1,4 +1,3 @@
-import 'package:books_app/core/shimmer/shimmer_books_items.dart';
 import 'package:books_app/feature/cart/controller/cart_cubit.dart';
 import 'package:books_app/feature/cart/controller/cart_state.dart';
 import 'package:books_app/feature/cart/views/empty_cart.dart';
