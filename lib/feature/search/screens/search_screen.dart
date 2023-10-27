@@ -1,7 +1,8 @@
 import 'package:books_app/core/routes/route_name.dart';
+import 'package:books_app/core/shimmer/shimmer_book_item.dart';
+import 'package:books_app/core/shimmer/shimmer_books_items.dart';
 import 'package:books_app/core/theme/app_color.dart';
 import 'package:books_app/core/widgets/book_item.dart';
-import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
 import 'package:books_app/feature/search/controller/search_cubit.dart';
 import 'package:books_app/feature/search/view/filteration_view.dart';
 import 'package:books_app/feature/search/widgets/no_more_books.dart';
@@ -31,7 +32,7 @@ class SearchScreen extends StatelessWidget {
                   ..loadCatgory();
               }
               if (state is LoadingResultes) {
-                return const CircleLoading();
+                return const ShimmerBooksItmes();
               }
               return Column(
                 children: [
@@ -98,7 +99,7 @@ class SearchScreen extends StatelessWidget {
                             if (SearchCubit.getInstanse(context).endPage) {
                               return const NoMoreBooks();
                             } else {
-                              return const CircleLoading();
+                              return const ShimmerBookItem();
                             }
                           }
                           return BookItem(

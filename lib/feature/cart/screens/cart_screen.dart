@@ -1,5 +1,5 @@
+import 'package:books_app/core/shimmer/shimmer_books_items.dart';
 import 'package:books_app/core/theme/app_color.dart';
-import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
 import 'package:books_app/core/widgets/custom_button.dart';
 import 'package:books_app/core/widgets/sized_box_high.dart';
 import 'package:books_app/feature/cart/controller/cart_cubit.dart';
@@ -32,7 +32,7 @@ class CartScreen extends StatelessWidget {
               listener: (context, state) {},
               builder: (context, state) {
                 if (state is LoadingCartItems) {
-                  return const CircleLoading();
+                  return const ShimmerBooksItmes();
                 }
                 if (CartCubit.getInstanse().books.isEmpty) {
                   return const EmptyCartView();
