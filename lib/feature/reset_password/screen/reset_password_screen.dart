@@ -31,7 +31,6 @@ class ResetPasswordScreen extends StatelessWidget {
         body: BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
           builder: (context, state) {
             ResetPasswordCubit.getInstanse().code = code;
-
             if (state is SucessfullyResetPassword) {
               return const SucefullyResetPasswordView();
             }

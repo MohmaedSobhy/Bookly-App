@@ -9,36 +9,33 @@ class SuccessSendOrderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Image(
-              image: const AssetImage("images/approved.png"),
-              width: MediaQuery.sizeOf(context).width * 0.2,
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Center(
+          child: Image(
+            image: const AssetImage("images/approved.png"),
+            width: MediaQuery.sizeOf(context).width * 0.2,
           ),
-          const SizedBoxHight(),
-          const Text(
-            AppString.thankYou,
-            style: TextStyle(
-                color: AppColor.darkBlue,
-                fontSize: 25,
-                fontWeight: FontWeight.bold),
-          ),
-          const SizedBoxHight(),
-          const Text(
-            AppString.orderConfirm,
-            style: TextStyle(
-                color: AppColor.darkBlue,
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
+        ),
+        const SizedBoxHight(),
+        const Text(
+          AppString.thankYou,
+          style: TextStyle(
+              color: AppColor.darkBlue,
+              fontSize: 25,
+              fontWeight: FontWeight.bold),
+        ),
+        const SizedBoxHight(),
+        const Text(
+          AppString.orderConfirm,
+          style: TextStyle(
+              color: AppColor.darkBlue,
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
+        ),
+      ],
     );
   }
 }

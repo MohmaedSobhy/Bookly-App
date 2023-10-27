@@ -24,7 +24,7 @@ class AppRouting {
       case RoutesName.spalsh:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const SplashScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -38,7 +38,7 @@ class AppRouting {
       case RoutesName.login:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const LoginScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -52,7 +52,7 @@ class AppRouting {
       case RoutesName.signUp:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const SignUpScreeen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -66,7 +66,7 @@ class AppRouting {
       case RoutesName.boardingScreen:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const OnbordingScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -80,7 +80,7 @@ class AppRouting {
       case RoutesName.ottp:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => OttpScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -97,7 +97,7 @@ class AppRouting {
           pageBuilder: (_, __, ___) => BookDetailsScreen(
             book: book,
           ),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -111,7 +111,7 @@ class AppRouting {
       case RoutesName.homelayout:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const HomeLayout(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -125,7 +125,7 @@ class AppRouting {
       case RoutesName.updatePassword:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const UpdatePasswordScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -144,7 +144,7 @@ class AppRouting {
       case RoutesName.contactUs:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const ContactUsScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -160,7 +160,7 @@ class AppRouting {
       case RoutesName.orderHistory:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const OrderHistoryScreen(),
-          transitionDuration: const Duration(milliseconds: 400),
+          transitionDuration: const Duration(milliseconds: 500),
           transitionsBuilder: (_, animation, __, child) {
             return SlideTransition(
               position: Tween<Offset>(

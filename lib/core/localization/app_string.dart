@@ -66,4 +66,11 @@ abstract class AppString {
   static const String requestPasswordReset = "Request Password Reset";
   static const String resetPasswordInstruction =
       "Enter the email address you used when you joined and we'll send you instruction to reset your password";
+
+  static const String passwordChangeSuccessfullyy =
+      "Password changed successfully!";
+
+  static const String passwordChange =
+      "Your password has been changed successfully";
+  static const String done = "Done";
 }
