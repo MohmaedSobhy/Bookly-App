@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:books_app/core/API/api.dart';
+import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/API/end_points.dart';
 import 'package:flutter/material.dart';
 import 'package:synchronized/synchronized.dart';
@@ -27,8 +28,11 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   ResetPasswordCubit() : super(ResetPasswordInitial());
 
   void resetUserPassword() {
-    APIManager.postMethod(baseUrl: EndPoints.resetPassword, body: {})
-        .then((response) {
+    APIManager.postMethod(baseUrl: EndPoints.resetPassword, body: {
+      APIKey.verfiyCode: code,
+      APIKey.newPassword: password.text,
+      APIKey.newPasswordConfirm: confirmpassword.text,
+    }).then((response) {
       if (response.statusCode == 200) {
         _sucefullyResetPassword();
       } else {

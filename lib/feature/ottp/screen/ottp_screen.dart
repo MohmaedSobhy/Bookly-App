@@ -35,7 +35,11 @@ class OttpScreen extends StatelessWidget {
                 }
                 if (state is OttpCodeValide) {
                   ShowToast.sucuessMessage(message: "Code Valid");
-                  Get.offAllNamed(RoutesName.resetPassword);
+                  Get.offAllNamed(
+                    RoutesName.resetPassword,
+                    arguments: pinController.text,
+                  );
+                  pinController.clear();
                 }
               },
               builder: (context, state) {

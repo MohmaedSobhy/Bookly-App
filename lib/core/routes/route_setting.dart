@@ -5,6 +5,7 @@ import 'package:books_app/feature/forget%20password/screens/forget_password_scre
 import 'package:books_app/feature/layout/screens/home_layout.dart';
 import 'package:books_app/feature/order%20history/screens/order_history.dart';
 import 'package:books_app/feature/order/screens/order_screen.dart';
+import 'package:books_app/feature/reset_password/screen/reset_password_screen.dart';
 import 'package:books_app/feature/splash/screen/splash_screen.dart';
 import 'package:books_app/feature/update_password/screens/update_password.dart';
 import 'package:books_app/feature/user%20profile/screens/user_profile_screen.dart';
@@ -49,7 +50,7 @@ class AppRouting {
           },
         );
       case RoutesName.signUp:
-        PageRouteBuilder(
+        return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const SignUpScreeen(),
           transitionDuration: const Duration(milliseconds: 400),
           transitionsBuilder: (_, animation, __, child) {
@@ -77,7 +78,7 @@ class AppRouting {
           },
         );
       case RoutesName.ottp:
-        PageRouteBuilder(
+        return PageRouteBuilder(
           pageBuilder: (_, __, ___) => OttpScreen(),
           transitionDuration: const Duration(milliseconds: 400),
           transitionsBuilder: (_, animation, __, child) {
@@ -92,7 +93,7 @@ class AppRouting {
         );
       case RoutesName.bookDetails:
         Book book = settings.arguments as Book;
-        PageRouteBuilder(
+        return PageRouteBuilder(
           pageBuilder: (_, __, ___) => BookDetailsScreen(
             book: book,
           ),
@@ -122,7 +123,7 @@ class AppRouting {
           },
         );
       case RoutesName.updatePassword:
-        PageRouteBuilder(
+        return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const UpdatePasswordScreen(),
           transitionDuration: const Duration(milliseconds: 400),
           transitionsBuilder: (_, animation, __, child) {
@@ -139,6 +140,7 @@ class AppRouting {
         return MaterialPageRoute(builder: (_) => const UserProfileScreen());
       case RoutesName.sendOrder:
         return MaterialPageRoute(builder: (_) => const OrderScreen());
+
       case RoutesName.contactUs:
         return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const ContactUsScreen(),
@@ -156,7 +158,7 @@ class AppRouting {
       case RoutesName.forgetPassword:
         return MaterialPageRoute(builder: (_) => const ForgetPassWordScreen());
       case RoutesName.orderHistory:
-        PageRouteBuilder(
+        return PageRouteBuilder(
           pageBuilder: (_, __, ___) => const OrderHistoryScreen(),
           transitionDuration: const Duration(milliseconds: 400),
           transitionsBuilder: (_, animation, __, child) {
@@ -169,6 +171,10 @@ class AppRouting {
             );
           },
         );
+      case RoutesName.resetPassword:
+        String codeArguments = settings.arguments as String;
+        return MaterialPageRoute(
+            builder: (_) => ResetPasswordScreen(code: codeArguments));
       case RoutesName.category:
         Category category = settings.arguments as Category;
         return MaterialPageRoute(
