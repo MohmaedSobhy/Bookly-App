@@ -78,16 +78,3 @@ class BookOffer extends StatelessWidget {
     );
   }
 }
-/*
-(character.image == null)
-              ? const CircularProgressIndicator(
-                  color: AppColor.yellow,
-                )
-              : FadeInImage(
-                  width: double.infinity,
-                  height: double.infinity,
-                  placeholder: const AssetImage("assets/images/loading.gif"),
-                  fit: BoxFit.cover,
-                  image: NetworkImage(character.image!),
-                ),
- */

@@ -30,7 +30,6 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> laodData() async {
     emit(LoadData());
     await Future.wait([_loadCatgory(), _loadBestSaller(), _loadNewArrival()]);
-    await Future.delayed(const Duration(seconds: 2));
     if (bestSaller.isNotEmpty &&
         categories.isNotEmpty &&
         newArrival.isNotEmpty) {
