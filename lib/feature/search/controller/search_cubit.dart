@@ -109,9 +109,9 @@ class SearchCubit extends Cubit<SearchState> {
 
   void applyFilteration() {
     String url = getUrl();
-    print("hello");
+
     emit(LoadingResultes());
-    print(url);
+
     APIManager.getMethod(baseUrl: url).then((response) {
       if (response.statusCode == 200 || response.statusCode == 201) {
         selected.clear();
