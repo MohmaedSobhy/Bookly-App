@@ -17,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    print('hello splash screen');
     Timer(const Duration(seconds: 1), () {
       _naviagate();
     });
@@ -51,13 +52,11 @@ class _SplashScreenState extends State<SplashScreen> {
     });
     await StorageHelper.isKeyExist("FirstTimeUseApp").then((value) {
       firstTimeUseApp = value;
-      print(value);
     });
-    print(firstTimeUseApp);
-    if (firstTimeUseApp == false) {
-      StorageHelper.addKey(key: "FirstTimeUseApp", value: "key");
-    }
 
+    if (firstTimeUseApp == false) {
+      await addKey();
+    }
     _navigatToNextScreen(check, firstTimeUseApp);
   }
 
@@ -69,5 +68,10 @@ class _SplashScreenState extends State<SplashScreen> {
     } else {
       Get.offAllNamed(RoutesName.login);
     }
+  }
+
+  Future<void> addKey() async {
+    StorageHelper.addKey(key: "FirstTimeUseApp", value: "key");
+    print(StorageHelper.isKeyExist("FirstTimeUseApp"));
   }
 }
