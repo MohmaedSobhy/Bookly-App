@@ -17,13 +17,13 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    Timer(const Duration(seconds: 1), () {
+      _naviagate();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 1), () {
-      _naviagate();
-    });
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       body: SafeArea(
@@ -45,13 +45,29 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _naviagate() async {
     bool check = false;
+    bool firstTimeUseApp = false;
     await StorageHelper.isKeyExist(APIKey.token).then((value) {
       check = value;
     });
+    await StorageHelper.isKeyExist("FirstTimeUseApp").then((value) {
+      firstTimeUseApp = value;
+      print(value);
+    });
+    print(firstTimeUseApp);
+    if (firstTimeUseApp == false) {
+      StorageHelper.addKey(key: "FirstTimeUseApp", value: "key");
+    }
+
+    _navigatToNextScreen(check, firstTimeUseApp);
+  }
+
+  void _navigatToNextScreen(bool check, bool isFirst) {
     if (check) {
       Get.offAllNamed(RoutesName.homelayout);
-    } else {
+    } else if (isFirst == false) {
       Get.offAllNamed(RoutesName.boardingScreen);
+    } else {
+      Get.offAllNamed(RoutesName.login);
     }
   }
 }

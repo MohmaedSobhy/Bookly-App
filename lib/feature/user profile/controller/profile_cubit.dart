@@ -5,7 +5,6 @@ import 'package:books_app/core/API/api.dart';
 import 'package:books_app/core/API/api_keys.dart';
 import 'package:books_app/core/API/end_points.dart';
 import 'package:books_app/core/data/shared_date.dart';
-import 'package:books_app/core/helper/show_toast_message.dart';
 import 'package:books_app/core/localization/app_string.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -29,6 +28,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   static ProfileCubit? profileCubit;
   File? imageProfile;
   static final Lock lock = Lock();
+  bool loading = false;
 
   static ProfileCubit getInstanse() {
     if (profileCubit == null) {
@@ -99,7 +99,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     await StorageHelper.getValue(key: APIKey.token).then((value) {
       token = value;
     });
-
+    loading = true;
+    emit(LoadingUpdateState());
     APIManager.postMethod(
             baseUrl: EndPoints.updateProfile,
             body: {
@@ -109,16 +110,18 @@ class ProfileCubit extends Cubit<ProfileState> {
             },
             token: token)
         .then(
-      (response) async {
+      (response) {
         if (response.statusCode == 200 || response.statusCode == 201) {
-          await _saveChange();
-          ShowToast.sucuessMessage(
-            message: AppString.updateSucceed,
-          );
+          sucessfullyUpdaterUserInformation();
           emit(ProfileUpdateSuccessfully());
         } else {}
       },
     ).catchError((error) {});
+  }
+
+  void sucessfullyUpdaterUserInformation() async {
+    await _saveChange();
+    resetValues();
   }
 
   void buttonOnPressed() {
@@ -132,10 +135,14 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  Future<void> _saveChange() async {
-    profileScreen = false;
+  void resetValues() {
+    profileScreen = true;
     readOnly = true;
-    textButton = AppString.updateProfile;
+    loading = false;
+    textButton = AppString.update;
+  }
+
+  Future<void> _saveChange() async {
     StorageHelper.addKey(key: APIKey.name, value: nameController.text);
     StorageHelper.addKey(key: APIKey.phone, value: phoneController.text);
     StorageHelper.addKey(key: APIKey.address, value: addressController.text);

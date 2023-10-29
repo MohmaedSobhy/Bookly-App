@@ -23,10 +23,7 @@ class ImageProfile extends StatelessWidget {
           visible: condition,
           child: const CircleAvatar(
             radius: 80,
-            child: Icon(
-              Icons.person,
-              size: 80,
-            ),
+            backgroundImage: AssetImage("images/acpc.jfif"),
           ),
         ),
         if (condition == false)

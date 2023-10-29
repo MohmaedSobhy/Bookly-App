@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             if (state is LoadData) {
               return const ShimmerHomeView();
             }
-            return const ShimmerHomeView();
+            return const HomeBodyView();
           },
         ),
       ],
