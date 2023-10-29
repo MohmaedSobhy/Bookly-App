@@ -17,10 +17,10 @@ class HomeScreen extends StatelessWidget {
       connectivityBuilder: (BuildContext context,
           ConnectivityResult connectivity, Widget child) {
         return (connectivity != ConnectivityResult.none)
-            ? NoInternetConnectionWidget()
-            : HomeView();
+            ? const HomeView()
+            : const NoInternetConnectionWidget();
       },
-      child: HomeView(),
+      child: const HomeView(),
     );
   }
 }
