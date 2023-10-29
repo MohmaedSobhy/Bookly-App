@@ -1,4 +1,5 @@
 import 'package:books_app/core/widgets/cricle_progress_indicator.dart';
+import 'package:books_app/core/widgets/sized_box_high.dart';
 import 'package:books_app/feature/order%20history/controller/order_history_cubit.dart';
 import 'package:books_app/feature/order%20history/controller/order_history_state.dart';
 import 'package:books_app/feature/order%20history/widgets/order_item.dart';
@@ -74,10 +75,25 @@ class HistoryEmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Image(
-        image: AssetImage("images/clock.png"),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Image(
+          height: MediaQuery.sizeOf(context).height * 0.2,
+          image: const AssetImage("images/clock.png"),
+        ),
+        const SizedBoxHight(),
+        const Text(
+          AppString.noMoreBooks,
+          style: TextStyle(
+            color: AppColor.darkBlue,
+            fontWeight: FontWeight.w700,
+            fontSize: 25,
+          ),
+          textAlign: TextAlign.center,
+        )
+      ],
     );
   }
 }

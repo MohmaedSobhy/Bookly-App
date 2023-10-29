@@ -73,4 +73,6 @@ abstract class AppString {
   static const String passwordChange =
       "Your password has been changed successfully";
   static const String done = "Done";
+
+  static const String noPaymentOrders = "No Payment Orders For now";
 }
