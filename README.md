@@ -18,13 +18,16 @@ This is a GitHub project for a Books application that allows users to browse, se
 🚪 - Logout <br>
 📚 - Order History <br>
 👤 - User Profile <br>
+### Splash Screen 
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/389d6462-1b3b-438e-ad95-b93d3bdce1f4.jpg" width="150" height="275"> 
 
+### On Boarding Screen 
 ## User Authentication
 🔐 Users can log in with their existing accounts or sign up if they don't have an account yet.
 
 ## Home Screen
 🏠 The home screen displays the best-selling books and newly arrived books to capture the user's attention.<br>
-<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/389d6462-1b3b-438e-ad95-b93d3bdce1f4" width="45",height="45"> 
+
 
 ## Book Search and Filter
 🔍 Users can search for books based on title or category or price. <br>
