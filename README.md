@@ -23,7 +23,8 @@ This is a GitHub project for a Books application that allows users to browse, se
 🔐 Users can log in with their existing accounts or sign up if they don't have an account yet.
 
 ## Home Screen
-🏠 The home screen displays the best-selling books and newly arrived books to capture the user's attention.
+🏠 The home screen displays the best-selling books and newly arrived books to capture the user's attention.<br>
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/389d6462-1b3b-438e-ad95-b93d3bdce1f4" width="45",height="45"> 
 
 ## Book Search and Filter
 🔍 Users can search for books based on title or category or price. <br>
@@ -58,5 +59,7 @@ This is a GitHub project for a Books application that allows users to browse, se
 👤 Users can access their profile and update personal details such as name, profile picture, and other relevant information.
 
 Please note that this is a summary of the features and screens available in the Books application. The actual implementation and design may vary based on the project's specific requirements and development progress.
+
+
 
 <br>  download App apk : https://drive.google.com/file/d/1vy6nYzPYZ78_Iz7FgdCyjiRlF-0ibfAk/view?usp=sharing
