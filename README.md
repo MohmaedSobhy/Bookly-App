@@ -99,6 +99,3 @@ This is a GitHub project for a Books application that allows users to browse, se
 
 ## App APK 
 📱 download apk : https://drive.google.com/file/d/1vy6nYzPYZ78_Iz7FgdCyjiRlF-0ibfAk/view?usp=sharing
-
-Please note that this is a summary of the features and screens available in the Books application. The actual implementation and design may vary based on the project's specific requirements and development progress.
-
