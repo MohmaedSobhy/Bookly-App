@@ -44,7 +44,7 @@ This is a GitHub project for a Books application that allows users to browse, se
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/0c3b5a6a-715b-4504-bcb1-17e6f8586d26.jpg" width="150" height="300"> 
 
 ## Add Favorites
-❤️ The application also allows users to mark books as favorites for easy access <br>
+❤️ The application also allows users to mark books as favorites for easy access <br><br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/1594ae4a-6813-400a-8833-e77d00be66c3.jpg" width="150" height="300"> 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/d7a68bf7-6b5e-44ca-b83a-b4ae2a8b961b.jpg" width="150" height="300"> 
 
@@ -53,18 +53,18 @@ This is a GitHub project for a Books application that allows users to browse, se
 🛍️ The cart screen shows the list of books added by the user. <br>
 ➕➖ Users can increment or decrement the quantity of each book in the cart. <br>
 🛒✅ Users can proceed to checkout by providing their city and address details. <br>
-📍 The application handles the order placement process securely <br>
+📍 The application handles the order placement process securely <br><br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/c1537880-29f8-4fc7-9527-4f1e8270091a.jpg" width="150" height="300"> 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/b99822ce-40ba-459b-87b2-04cf7de4325c.jpg" width="150" height="300"> 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/13b72f2a-85f2-46dd-91bb-87b9f9de60d2.jpg" width="150" height="300"> 
 
 
 ## User Settings
-⚙️ The user settings screen allows users to customize their preferences and update password view all payment history.<br>
+⚙️ The user settings screen allows users to customize their preferences and update password view all payment history.<br><br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/0c0e8ebc-d210-4f67-b54d-27c1db0765fd.jpg" width="150" height="300"> 
 
 ## Contact Us
-💬 Users can contact the application support team directly from within the app. <br>
+💬 Users can contact the application support team directly from within the app. <br><br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/13b72f2a-85f2-46dd-91bb-87b9f9de60d2.jpg" width="150" height="300"> 
 
 ## Password Update and Logout
@@ -74,15 +74,15 @@ This is a GitHub project for a Books application that allows users to browse, se
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/6fe2f4b2-dd87-44cf-b3c4-9130acd6ff99).jpg" width="150" height="300"> 
 
 ## Order History
-📚 Users can view their order history to keep track of their previous purchases.<br>
+📚 Users can view their order history to keep track of their previous purchases.<br> <br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/d2d46752-d9b6-4b2d-b938-631778231517.jpg" width="150" height="300"> 
 
 ## User Profile
-👤 Users can access their profile and update personal details such as name, profile picture, and other relevant information.<br>
+👤 Users can access their profile and update personal details such as name, profile picture, and other relevant information.<br> <br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/54e4a538-d46a-4eb2-a62e-59d8919679a7.jpg" width="150" height="300"> 
 
 ## Handle Network Connection 
-🌐❗️ handle interupted internet connection <br>
+🌐❗️ handle interupted internet connection <br> <br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/11179054-fddf-4fbf-a3b9-83d5d024a7bf.jpg" width="150" height="300"> 
 
 ## App APK 
