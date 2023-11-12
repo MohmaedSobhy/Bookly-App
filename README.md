@@ -54,10 +54,10 @@ This is a GitHub project for a Books application that allows users to browse, se
 ➕➖ Users can increment or decrement the quantity of each book in the cart. <br>
 🛒✅ Users can proceed to checkout by providing their city and address details. <br>
 📍 The application handles the order placement process securely <br><br>
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/5bc0342a-71b6-4294-96d8-04f6af1af2c2.jpg" width="150" height="300"> 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/c1537880-29f8-4fc7-9527-4f1e8270091a.jpg" width="150" height="300"> 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/b99822ce-40ba-459b-87b2-04cf7de4325c.jpg" width="150" height="300"> 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/13b72f2a-85f2-46dd-91bb-87b9f9de60d2.jpg" width="150" height="300"> 
-
 
 ## User Settings
 ⚙️ The user settings screen allows users to customize their preferences and update password view all payment history.<br><br>
