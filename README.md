@@ -16,7 +16,7 @@ This is a GitHub project for a Books application that allows users to browse, se
 🚪 - Logout <br>
 📚 - Order History <br>
 👤 - User Profile <br>
-👤 - Forget Password <br>
+🔑 - Forget Password <br>
 
 ## Splash Screen 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/389d6462-1b3b-438e-ad95-b93d3bdce1f4.jpg" width="150" height="300"> 
@@ -86,9 +86,16 @@ This is a GitHub project for a Books application that allows users to browse, se
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/11179054-fddf-4fbf-a3b9-83d5d024a7bf.jpg" width="150" height="300"> 
 
 ## Shimmer Loading 
-🔄 shimmer loading view  <br> 
+🔄 shimmer loading view  <br> <br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/d9a8098e-8c50-431e-bd1f-d905bc7cf3b0.jpg" width="150" height="300"> 
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/20180c3f-187b-494d-8a29-71c8f47c37f5.jpg" width="150" height="300"> 
+
+## Forget Password 
+🔑 - forget Password using email and send ottp to email and user change password and then login again  <br> <br>
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/9a1edc8e-ab35-4804-a498-ce3bf4971380.jpg" width="150" height="300"> 
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/1978e843-9ee9-45a2-a872-d4e98065aa2e.jpg" width="150" height="300"> 
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/22d95b66-9545-45bb-8219-a4ded842cee5.jpg" width="150" height="300"> 
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/b50a69fd-2ef6-4f83-a6b2-da3a55f2ed87.jpg" width="150" height="300"> 
 
 ## App APK 
 📱 download apk : https://drive.google.com/file/d/1vy6nYzPYZ78_Iz7FgdCyjiRlF-0ibfAk/view?usp=sharing
