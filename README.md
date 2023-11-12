@@ -85,6 +85,11 @@ This is a GitHub project for a Books application that allows users to browse, se
 🌐❗️ handle interupted internet connection <br> <br>
 <img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/11179054-fddf-4fbf-a3b9-83d5d024a7bf.jpg" width="150" height="300"> 
 
+## Shimmer Loading 
+🔄 shimmer loading view  <br> 
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/d9a8098e-8c50-431e-bd1f-d905bc7cf3b0.jpg" width="150" height="300"> 
+<img src = "https://github.com/MohmaedSobhy/booky_app/assets/70748430/20180c3f-187b-494d-8a29-71c8f47c37f5.jpg" width="150" height="300"> 
+
 ## App APK 
 📱 download apk : https://drive.google.com/file/d/1vy6nYzPYZ78_Iz7FgdCyjiRlF-0ibfAk/view?usp=sharing
 
