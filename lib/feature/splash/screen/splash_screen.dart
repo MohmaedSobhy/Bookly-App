@@ -54,9 +54,9 @@ class _SplashScreenState extends State<SplashScreen> {
       firstTimeUseApp = value;
     });
 
-    if (firstTimeUseApp == false) {
-      await addKey();
-    }
+    // if (firstTimeUseApp == false) {
+    //   await addKey();
+    // }
     _navigatToNextScreen(check, firstTimeUseApp);
   }
 

@@ -10,7 +10,9 @@ class CustomeTextFormField extends StatelessWidget {
   final TextInputType textInputType;
   final int? maxLines;
   final bool? obscure;
-
+  final Widget suffixIcon;
+  final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
   CustomeTextFormField({
     super.key,
     required this.controller,
@@ -20,6 +22,9 @@ class CustomeTextFormField extends StatelessWidget {
     this.readOnly,
     this.maxLines,
     this.obscure,
+    this.hintStyle,
+    this.labelStyle,
+    this.suffixIcon,
   });
 
   @override
@@ -32,12 +37,15 @@ class CustomeTextFormField extends StatelessWidget {
       cursorColor: Theme.of(context).primaryColor,
       obscureText: (obscure == null) ? false : obscure!,
       keyboardType: textInputType,
+
       // autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         hintText: hint,
         hintStyle: const TextStyle(
           color: Colors.black,
         ),
+        suffix: suffixIcon,
+        labelStyle: labelStyle,
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: Colors.black,
